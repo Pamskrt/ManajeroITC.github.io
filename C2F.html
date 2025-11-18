@@ -6,70 +6,94 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+        <style>
+            /* Apply spacing consistent with your previous .field rules */
+            #c2f .field {
+                margin-bottom: 2rem;
+            }
+            /* Style to match the template's overall dark theme */
+            #result {
+                background-color: #333333; 
+                color: #f0f0f0;
+            }
+        </style>
+
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
 		<div id="wrapper">
 
-			<!-- Header -->
 			<header id="header">
 				<div class="logo">
-					<span class="icon fa-gem"></span>
+					<span class="icon fa-thermometer-half"></span>
 				</div>
 				<div class="content">
 					<div class="inner">
-						<h1>Dimension</h1>
-						<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<h1>Temperature Converter</h1>
+						<p>Celsius to Fahrenheit</p>
 					</div>
 				</div>
 				<nav>
 					<ul>
-						<li><a href="index.html">HOME</a></li>
+						<li><a href="#c2f">START</a></li>
 					</ul>
 				</nav>
 			</header>
 
-			<!-- Main -->
 			<div id="main">
 
-				<article id="c2f">
-					<div class="inner">
-						<h2>Celsius to Fahrenheit</h2>
-						<p>Formula: Fahrenheit = ( ( Celsius * 9 ) / 5 ) + 32</p>
-						<br><br>
-						<label for="cel">Enter Celsius : </label>
-						<input id="cel">
-						<button onclick="enterCel()"> CALCULATE </button>
-						<button onclick="clearValues()"> CLEAR </button>
-						<br><br><br>
-						<label for="result">Fahrenheit Conversion : </label>
-						<input id="result" readonly style="color:black;">
-						<br><br><br>
-						<a href="index.html">HOME</a>
+				<article id="c2f" class="active"> 
+					<h2 class="major">Celsius to Fahrenheit</h2>
+					
+                    <blockquote style="margin-bottom: 3rem;">
+                        Formula: Fahrenheit = ( ( Celsius &times; 9 ) / 5 ) + 32
+                    </blockquote>
+					
+                    <div class="field">
+						<label for="cel">Enter Celsius:</label>
+						<input id="cel" type="number" name="cel" placeholder="e.g., 25">
 					</div>
+					
+                    <ul class="actions">
+						<li><button onclick="enterCel()" class="button primary">CALCULATE</button></li>
+						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
+
+                    <div class="field">
+					    <label for="result">Fahrenheit Conversion:</label>
+					    <input id="result" type="text" name="result" readonly>
+                    </div>
+
+                    <a href="index.html" class="home-link">HOME</a>
 				</article>
 
 			</div>
 
-			<!-- Footer -->
 			<footer id="footer">
 				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 			</footer>
 
 		</div>
 
-		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 
-		<!-- Your JS -->
 		<script>
 			function enterCel() {
-				let celsh = document.getElementById("cel").value*1;
+				// Use parseFloat to handle non-integer input
+				let celsh = parseFloat(document.getElementById("cel").value);
+                
+                if (isNaN(celsh)) {
+                    document.getElementById("result").value = "Invalid Input";
+                    return;
+                }
+                
 				let fah = ( ( celsh * 9 ) / 5 ) + 32;
 				fah = fah.toFixed(2);
 				document.getElementById("result").value = fah;
@@ -79,6 +103,11 @@
 				document.getElementById("cel").value = '';
 				document.getElementById("result").value = '';
 			}
+
+            // Remove the 'is-preload' class after the page loads for transitions
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
 		</script>
 
 	</body>
