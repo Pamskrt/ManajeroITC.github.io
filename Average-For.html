@@ -6,91 +6,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-        /* Make inputs visible even with template CSS */
-        input, button {
-            display: inline-block;
-            padding: 0.5em;
-            margin: 0.2em 0;
-            font-size: 1em;
-        }
-        #numbers, #result {
-            display: block;
-            margin-top: 1em;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body class="is-preload">
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+<div id="wrapper">
 
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-gem"></span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>Dimension</h1>
-                    <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Main -->
-        <div id="main">
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <span class="icon fa-gem"></span>
+        </div>
+        <div class="content">
             <div class="inner">
-                <h1>The Average of the First n Numbers</h1>
-                <br>
-
-                <p>
-                <label for="n">Input a value : </label>
-                <input id="n" type="number" />
-                <button id="display"> DISPLAY NUMBERS </button>
-                </p>
-
-                <p id="numbers"></p>
-                <h3 id="result"></h3>
+                <h1>Dimension</h1>
+                <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
             </div>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-        </footer>
+    <!-- Main -->
+    <div id="main">
+        <article id="average">
+            <h1>The Average of the First n Numbers</h1>
+            <br>
 
+            <!-- Use template-friendly form -->
+            <form class="alt">
+                <div class="fields">
+                    <div class="field half">
+                        <label for="n">Input a value:</label>
+                        <input id="n" type="number" />
+                    </div>
+                    <div class="field half">
+                        <button type="button" id="display" class="button primary">DISPLAY NUMBERS</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="numbers"></div>
+            <h3 id="result"></h3>
+
+        </article>
     </div>
 
-    <!-- JS -->
-    <script>
-        document.getElementById("display").addEventListener("click", ()=> {
-            let n = document.getElementById("n").value*1;
-            if(n <= 0 || isNaN(n)) {
-                alert("Please enter a positive number.");
-                return;
-            }
+    <!-- Footer -->
+    <footer id="footer">
+        <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+    </footer>
 
-            let sum = 0;
-            let ntext = "";
+</div>
 
-            for (let i = 1; i <= n; i++) {
-                sum += i;
-                ntext += i + " ";
-            }
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-            let ave = sum / n;
+<script>
+document.getElementById("display").addEventListener("click", () => {
+    let n = document.getElementById("n").value*1;
+    if(n <= 0 || isNaN(n)) {
+        alert("Please enter a positive number.");
+        return;
+    }
 
-            document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
-            document.getElementById("result").innerHTML = "The Average of the first "+ n + " numbers is " + ave;
-        });
-    </script>
+    let sum = 0;
+    let ntext = "";
+
+    for (let i = 1; i <= n; i++) {
+        sum += i;
+        ntext += i + " ";
+    }
+
+    let ave = sum / n;
+
+    document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
+    document.getElementById("result").innerHTML = "The Average of the first "+ n + " numbers is " + ave;
+});
+</script>
 
 </body>
 </html>
