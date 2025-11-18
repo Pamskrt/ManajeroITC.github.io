@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+
+ <html>
+
+<body>
+
+    <h2>Fahrenheit to Celsius</h2>
+    <p> Formula: Celsius = ( ( Fahrenheit - 32 ) * 5) / 9</p>
+
+    <br><br>
+
+    <label for= "fah"> Enter Fahrenheit : </label>
+    <input id = "fah">
+
+    <button onclick="enterFah()"> CALCULATE </button>
+    <button onclick = "clearValues()"> CLEAR </button>
+
+        <br><br><br>
+        <label for = "result">Fahrenheit Conversion : </label>
+        <input id = "result" readonly>
+
+    <script>
+        
+        function enterFah()
+        {
+            let fahren = document.getElementById("fah").value*1;
+
+            let celsh = ((fahren - 32) * 5) / 9;
+            celsh = celsh.toFixed(2);
+
+            document.getElementById("enterr").value = celsh;
+        }
+
+        function clearValues()
+            {
+                document.getElementById("fahren").value = '';
+                document.getElementById("result").value = '';
+            }
+
+
+    </script>
+
+    <br><br><br><br>
+    <a href="main.html">HOME</a>
+
+</body>
+
+ </html>
