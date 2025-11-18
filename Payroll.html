@@ -274,7 +274,7 @@
 
                 dlgAreYouSure.dataset.action = "deleting";
                 dlgAreYouSure.dataset.empNo = empNo;
-                document.getElementById("dlgmsg2").innerHTML = "Are you sure you want to remove employee **#" + empNo + "** (" + emp[empNo - 1].empName + ")?";
+                document.getElementById("dlgmsg2").innerHTML = "Are you sure you want to remove employee " + empNo + "(" + emp[empNo - 1].empName + ")?";
                 dlgAreYouSure.showModal();
             });
 
