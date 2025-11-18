@@ -1,89 +1,54 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-    <title>Average Calculator</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-</head>
-<body class="is-preload">
+<body>
 
-<!-- Wrapper -->
-<div id="wrapper">
+    <h1>The Average of the First n Numbers</h1>
+    <br>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="logo"><span class="icon fa-gem"></span></div>
-        <nav>
-            <ul>
-                <li><a href="#average">Average Calculator</a></li>
-            </ul>
-        </nav>
-    </header>
+    <p>
+    <label for="n">Input a value : </label>
+    <input id="n" type="number"></input>
+    <button id = "display"> DISPLAY NUMBERS </button>
+    </p>
 
-    <!-- Main -->
-    <div id="main">
+    <br>
+    <p id="numbers"></p>
 
-        <!-- Average Calculator Section -->
-        <article id="average">
-            <h1 class="major">The Average of the First n Numbers</h1>
 
-            <p>
-                <label for="n">Input a value: </label>
-                <input id="n" type="number" placeholder="Enter a number" />
-            </p>
+    <h3 id="result"></h3>
 
-            <p id="numbers"></p>
-            <h3 id="result"></h3>
-
-            <br><br>
-            <a href="main.html" class="button">HOME</a>
-        </article>
-
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-    </footer>
-
-</div>
-
-<!-- BG -->
-<div id="bg"></div>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-
-<!-- Your Average Calculator Script -->
 <script>
-const input = document.getElementById("n");
 
-input.addEventListener("input", () => {
-    let n = Number(input.value);
-    if (n <= 0 || isNaN(n)) {
-        document.getElementById("numbers").innerHTML = "";
-        document.getElementById("result").innerHTML = "";
-        return;
-    }
+    document.getElementById("display").addEventListener("click", ()=> {
+t
+        let n = document.getElementById("n").value*1;
+        let sum, ave, i, ntext;
 
-    let sum = 0, ntext = "";
-    for (let i = 1; i <= n; i++) {
-        sum += i;
-        ntext += i + (i < n ? ", " : "");
-    }
-    let ave = sum / n;
+        sum = 0;
+        ave = 0;
+        ntext = "";
 
-    document.getElementById("numbers").innerHTML = ntext;
-    document.getElementById("result").innerHTML =
-        "The Average of the first " + n + " numbers is " + ave;
-});
+        for (i = 1; i <= n ; i++) 
+        {
+            sum += i;
+        }
+
+        ave = sum / n;
+
+        document.getElementById("numbers").innerHTML = ntext;
+
+        document.getElementById("result").innerHTML=
+        "The Average of the first "+ n + " numbers is " + ave;
+
+    });
+
+
 </script>
 
+ <br><br><br><br>
+    <a href="main.html">HOME</a>
+
 </body>
+
 </html>
+
