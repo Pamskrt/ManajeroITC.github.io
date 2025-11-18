@@ -1,40 +1,85 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
+	<head>
+		<title>Celsius to Fahrenheit Conversion</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-    input {
-        padding: 4px 8px;
-    }
+		<!-- Wrapper -->
+		<div id="wrapper">
 
-    button {
-        padding: 6px 12px;
-        margin-left: 5px;
-    }
+			<!-- Header -->
+			<header id="header">
+				<div class="logo">
+					<span class="icon fa-gem"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Dimension</h1>
+						<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="index.html">HOME</a></li>
+					</ul>
+				</nav>
+			</header>
 
-    a {
-        display: inline-block;
-        margin-top: 20px;
-    }
-</style>
-</head>
-<body>
+			<!-- Main -->
+			<div id="main">
 
-    <h2>Celsius to Fahrenheit</h2>
-    <p>Formula: Fahrenheit = ( ( Celsius * 9 ) / 5 ) + 32</p>
+				<article id="c2f">
+					<div class="inner">
+						<h2>Celsius to Fahrenheit</h2>
+						<p>Formula: Fahrenheit = ( ( Celsius * 9 ) / 5 ) + 32</p>
+						<br><br>
+						<label for="cel">Enter Celsius : </label>
+						<input id="cel">
+						<button onclick="enterCel()"> CALCULATE </button>
+						<button onclick="clearValues()"> CLEAR </button>
+						<br><br><br>
+						<label for="result">Fahrenheit Conversion : </label>
+						<input id="result" readonly style="color:black;">
+						<br><br><br>
+						<a href="index.html">HOME</a>
+					</div>
+				</article>
 
-    <br><br>
+			</div>
 
-    <label for="cel">Enter Celsius : </label>
-    <input id="cel">
+			<!-- Footer -->
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 
-    <button onclick="enterCel()">CALCULATE</button>
-    <button onclick="clearValues()">CLEAR</button>
+		</div>
 
-    <br><br><br>
-    <label for="result">Fahrenheit Conversion : </label>
-    <input id="result" rea
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<!-- Your JS -->
+		<script>
+			function enterCel() {
+				let celsh = document.getElementById("cel").value*1;
+				let fah = ( ( celsh * 9 ) / 5 ) + 32;
+				fah = fah.toFixed(2);
+				document.getElementById("result").value = fah;
+			}
+
+			function clearValues() {
+				document.getElementById("cel").value = '';
+				document.getElementById("result").value = '';
+			}
+		</script>
+
+	</body>
+</html>
