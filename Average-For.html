@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* Make inputs visible even with template CSS */
+        input, button {
+            display: inline-block;
+            padding: 0.5em;
+            margin: 0.2em 0;
+            font-size: 1em;
+        }
+        #numbers, #result {
+            display: block;
+            margin-top: 1em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -38,13 +52,11 @@
 
                 <p>
                 <label for="n">Input a value : </label>
-                <input id="n" type="number"></input>
+                <input id="n" type="number" />
                 <button id="display"> DISPLAY NUMBERS </button>
                 </p>
 
-                <br>
                 <p id="numbers"></p>
-
                 <h3 id="result"></h3>
             </div>
         </div>
@@ -56,29 +68,27 @@
 
     </div>
 
-    <!-- Your JS -->
+    <!-- JS -->
     <script>
         document.getElementById("display").addEventListener("click", ()=> {
-
             let n = document.getElementById("n").value*1;
-            let sum, ave, i, ntext;
-
-            sum = 0;
-            ave = 0;
-            ntext = "";
-
-            for (i = 1; i <= n ; i++) 
-            {
-                sum += i;
+            if(n <= 0 || isNaN(n)) {
+                alert("Please enter a positive number.");
+                return;
             }
 
-            ave = sum / n;
+            let sum = 0;
+            let ntext = "";
 
-            document.getElementById("numbers").innerHTML = ntext;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+                ntext += i + " ";
+            }
 
-            document.getElementById("result").innerHTML=
-            "The Average of the first "+ n + " numbers is " + ave;
+            let ave = sum / n;
 
+            document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
+            document.getElementById("result").innerHTML = "The Average of the first "+ n + " numbers is " + ave;
         });
     </script>
 
