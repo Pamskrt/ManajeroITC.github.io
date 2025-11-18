@@ -162,15 +162,7 @@
 
 		</div>
 
-        <dialog id="dlgConfirmCancel">
-            <form method="dialog">
-            <h4 id="dlgmsg"> Clear Employee List? </h4>   
-            <button id="confirmm" value="confirm" > CONFIRM </button>
-            <button id="cancel" value="cancel" > CANCEL </button>
-            </form>
-        </dialog>
-
-        <dialog id="dlgAreYouSure">
+                <dialog id="dlgAreYouSure">
             <form method="dialog">
             <h4 id="dlgmsg2"> Are you sure? </h4>   
             <button id="yes" value="yes" > YES </button>
@@ -196,17 +188,12 @@
                 document.getElementById("deductionAmount").value = "";
                 document.getElementById("emp").innerHTML="";
 
-                const cancel = document.getElementById("cancel");
-                const confirmm = document.getElementById("confirmm");
-                const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
-                dlgConfirmCancel.returnValue = "confirm";
-
                 const yes = document.getElementById("yes");
                 const no = document.getElementById("no");
                 const dlgAreYouSure = document.getElementById("dlgAreYouSure");
                 dlgAreYouSure.returnValue = "no";
 
-                showList();
+                showList(); 
             }
 
             document.getElementById("addEmp").addEventListener("click",()=> 
@@ -240,11 +227,14 @@
                 document.getElementById("deductionAmount").value = "";
 
             showList();
-
             });
 
             document.getElementById("clear").addEventListener("click", ()=>
             {
+                if (emp.length === 0) {
+                    alert("The employee list is already empty.");
+                    return;
+                }
                 dlgAreYouSure.dataset.action = "clearing";
                 document.getElementById("dlgmsg2").innerHTML = "Are you absolutely sure you want to clear the entire employee list?";
                 dlgAreYouSure.showModal();
@@ -252,35 +242,19 @@
 
             document.getElementById("deleteEmp").addEventListener("click",()=>
             {
-                let empNo = document.getElementById("delEmp").value*1;
+                let empNo = parseInt(document.getElementById("delEmp").value);
 
-                if (!empNo || empNo < 1 || empNo > emp.length)
+                if (isNaN(empNo) || empNo < 1 || empNo > emp.length)
                 {
-                    alert("Invalid Employee Number");
+                    alert("Invalid Employee Number or List is empty.");
                     document.getElementById("delEmp").value = "";
                     return;
                 }
 
                 dlgAreYouSure.dataset.action = "deleting";
                 dlgAreYouSure.dataset.empNo = empNo;
-                document.getElementById("dlgmsg2").innerHTML = "Are you sure you want to remove employee #" + empNo + "?";
+                document.getElementById("dlgmsg2").innerHTML = "Are you sure you want to remove employee **#" + empNo + "** (" + emp[empNo - 1].empName + ")?";
                 dlgAreYouSure.showModal();
-            });
-
-            confirmm.addEventListener("click", () => 
-				{
-            });
-
-            cancel.addEventListener("click", () => 
-				{
-            });
-
-            yes.addEventListener("click", () => 
-				{
-            });
-
-            no.addEventListener("click", () => 
-				{
             });
 
             dlgAreYouSure.addEventListener("close", (e)=>
@@ -357,8 +331,8 @@
                 tfooter ="<tfoot>";
                 tfooter+="<tr>";
                 tfooter+='<th colspan="2" style="text-align:left">Total Employees: '+emp.length+'</th>';
-                tfooter+='<th></th>';
-                tfooter+='<th></th>';
+                tfooter+='<th></th>'; // Empty cell for Day Worked
+                tfooter+='<th></th>'; // Empty cell for Daily Rate
                 tfooter+='<th style="text-align:right">'+totalGross.toFixed(2)+'</th>';
                 tfooter+='<th style="text-align:right">'+totalDeduct.toFixed(2)+'</th>';
                 tfooter+='<th style="text-align:right">'+totalNet.toFixed(2)+'</th>';
