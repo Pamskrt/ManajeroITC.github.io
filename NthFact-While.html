@@ -1,53 +1,145 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<body>
+	<head>
+		<title>Nth Factorial Calculator</title>
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
-    <h1>Nth FACTORIAL</h1>
-    <br>
+        <style>
+            /* Custom CSS for spacing and result field styling */
+            #factorial-calc .field { /* New article ID: 'factorial-calc' */
+                margin-bottom: 2rem;
+            }
+            /* Styling for the displayed numbers */
+            #numbers {
+                font-family: monospace;
+                font-size: 1.1em;
+                color: #ccc;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+            /* Styling for the final result */
+            #ntitle {
+                color: #ffffff;
+                font-weight: 600;
+                text-align: center;
+            }
+        </style>
+	</head>
+	<body class="is-preload">
 
-    <p>
-    <label for="n">Input a value : </label>
-    <input id="n" type="number"></input>
-    <button id = "display"> DISPLAY NUMBERS </button>
-    </p>
+		<div id="wrapper">
 
-    <br>
-    <p id="numbers"></p>
+			<header id="header">
+				<div class="logo">
+					<span class="icon fa-hashtag"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Math Calculator</h1>
+						<p>Calculate the Factorial (n!)</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#factorial-calc">START</a></li>
+					</ul>
+				</nav>
+			</header>
 
+			<div id="main">
 
-    <h3 id="ntitle"></h3>
+				<article id="factorial-calc" class="active"> 
+					<h2 class="major">Nth Factorial</h2>
+					
+                    <p>The factorial of a non-negative integer $n$ is the product of all positive integers less than or equal to $n$.</p>
+					
+                    <div class="field">
+						<label for="n">Input a positive integer:</label>
+						<input id="n" type="number" name="n" placeholder="e.g., 5">
+					</div>
+					
+                    <ul class="actions special">
+						<li><button id="display" class="button primary">CALCULATE FACTORIAL</button></li>
+                        <li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
+                    
+                                        <p id="numbers"></p>
+                    
+                                        <h3 id="ntitle"></h3>
 
-<script>
+					<hr>
 
-    document.getElementById("display").addEventListener("click", ()=> {
+                    <a href="index.html" class="home-link">HOME</a>
+				</article>
 
-        let n = document.getElementById("n").value*1;
-        let factorial,i,ntext;
+			</div>
 
-        factorial = 1;
-        i = 1;
-        ntext = "";
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 
-        while (i <= n) {
-            factorial *= i;
-            ntext += i + " ";
-            i++;
-        }
+		</div>
 
-        document.getElementById("numbers").innerHTML = ntext;
+		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
+		<script src="html5up-dimension/assets/js/browser.min.js"></script>
+		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+		<script src="html5up-dimension/assets/js/util.js"></script>
+		<script src="html5up-dimension/assets/js/main.js"></script>
 
-        document.getElementById("ntitle").innerHTML=
-        "The factorial of "+ n + " is " + factorial;
+		<script>
+            // Event Listener for the Calculate button
+            document.getElementById("display").addEventListener("click", ()=> {
 
-    });
+                let n = parseInt(document.getElementById("n").value); // Use parseInt for whole numbers
+                let factorial, i, ntext;
 
+                // Input Validation for factorials
+                if (isNaN(n) || n < 0 || !Number.isInteger(n)) {
+                    document.getElementById("numbers").innerHTML = "Please enter a non-negative whole number.";
+                    document.getElementById("ntitle").innerHTML = "";
+                    return;
+                }
+                
+                // Handle 0! = 1 case
+                if (n === 0) {
+                    document.getElementById("numbers").innerHTML = "1";
+                    document.getElementById("ntitle").innerHTML = "The factorial of 0 is 1";
+                    return;
+                }
 
-</script>
+                factorial = 1;
+                i = 1;
+                ntext = "";
 
-<br><br><br><br>
-<a href="index.html">HOME</a>
+                while (i <= n) {
+                    factorial *= i;
+                    ntext += i + " \u00d7 "; // Use the multiplication symbol
+                    i++;
+                }
 
+                // Remove the last multiplication sign
+                ntext = ntext.slice(0, -3);
 
-</body>
+                document.getElementById("numbers").innerHTML = ntext;
 
+                document.getElementById("ntitle").innerHTML=
+                "The factorial of "+ n + " is " + factorial;
+
+            });
+            
+            // Clear function for the added Clear button
+            function clearValues() {
+				document.getElementById("n").value = '';
+				document.getElementById("numbers").innerHTML = '';
+                document.getElementById("ntitle").innerHTML = '';
+			}
+            
+            // Remove the 'is-preload' class after the page loads for transitions
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
+		</script>
+	</body>
 </html>
