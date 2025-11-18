@@ -9,7 +9,9 @@
         {
             margin-bottom: 2rem;
         }
-        #numbers {
+        
+        #numbers 
+        {
             font-family: monospace;
             font-size: 1.1em;
             color: #ccc;
@@ -17,19 +19,22 @@
             text-align: center;
         }
         
-        #n {
-            background-color: #000000; /* Dark gray for the background */
-            color: #f0f0f0;            /* Light gray for the text entered by the user */
-            border: 1px solid #777;    /* Optional: for a visible border */
+        #n 
+        {
+            background-color: #000000;
+            color: #f0f0f0; 
+            border: 1px solid #777;
         }
 
-        #result {
+        #result 
+        {
             color: #ffffff;
             font-weight: 600;
             text-align: center;
         }
 
-        #main a.button.home-link {
+        #main a.button.home-link 
+        {
             margin-top: 2rem;
             display: inline-block;
             font-size: 0.8rem;
@@ -37,72 +42,69 @@
         }
     </style>
 </head>
+    
 <body class="is-preload">
     
     <div id="bg"></div>
-
     <div id="wrapper">
+    <div id="main">
+        <article id="average-for" class="active">
+        <h1 class="major">The Average of the First n Numbers</h1>
+                
+    <div class="field">
+         <label for="n">Input a value:</label>
+         <input id="n" type="number">
+    </div>
+                
+    <ul class="actions special">
+    <li><button id="display" class="button primary">DISPLAY NUMBERS & CALCULATE</button></li>
+    </ul>
+                
+    <hr>
+    <p id="numbers"></p>
+    <h3 id="result"></h3>
+
+    <hr>
+    <a href="index.html" class="button home-link">HOME</a>
+
+    </article>
+    </div>
         
-        <div id="main">
-            <article id="average-for" class="active">
-                
-                <h1 class="major">The Average of the First n Numbers</h1>
-                
-                <div class="field">
-                    <label for="n">Input a value:</label>
-                    <input id="n" type="number">
-                </div>
-                
-                <ul class="actions special">
-                    <li><button id="display" class="button primary">DISPLAY NUMBERS & CALCULATE</button></li>
-                </ul>
-                
-                <hr>
-
-                <p id="numbers"></p>
-                <h3 id="result"></h3>
-
-                <hr>
-
-                <a href="index.html" class="button home-link">HOME</a>
-
-            </article>
-        </div>
-        
-        <footer id="footer">
-            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-        </footer>
+<footer id="footer">
+    <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+</footer>
     </div>
 
     <script>
-        document.getElementById("display").addEventListener("click", () => {
-            // Use parseFloat() for robust numerical conversion
+        document.getElementById("display").addEventListener("click", () => 
+        {
             let n = parseFloat(document.getElementById("n").value); 
-            
-            // Input Validation (Good practice for user-facing inputs)
-            if (isNaN(n) || n <= 0 || !Number.isInteger(n)) {
-                document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
-                document.getElementById("result").innerHTML = "";
-                return;
+            if (isNaN(n) || n <= 0 || !Number.isInteger(n)) 
+            {
+                    document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
+                    document.getElementById("result").innerHTML = "";
+                    return;
             }
-
+    
             let sum = 0;
             let ntext = "";
-
-            for (let i = 1; i <= n; i++) {
+            for (let i = 1; i <= n; i++) 
+            {
                 sum += i;
-                ntext += i + " "; // add each number to ntext
+                ntext += i + " ";
             }
-
+            
             let ave = sum / n;
-
-            document.getElementById("numbers").innerHTML = ntext;
-            document.getElementById("result").innerHTML =
-                "The Average of the first " + n + " numbers is " + ave.toFixed(2); // Display average with 2 decimal places
+                document.getElementById("numbers").innerHTML = ntext;
+                document.getElementById("result").innerHTML =
+                "The Average of the first " + n + " numbers is " + ave.toFixed(2); 
         });
         
-        // Remove the 'is-preload' class after the page loads
-        window.onload = function() { document.body.classList.remove('is-preload'); }
+        window.onload = function() 
+        { 
+            document.body.classList.remove('is-preload'); 
+        }
+        
     </script>
 
 </body>
