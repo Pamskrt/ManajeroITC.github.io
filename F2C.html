@@ -2,77 +2,75 @@
 <html>
 	<head>
 		<title>Fahrenheit to Celsius Conversion</title>
-            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
+        <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
         <style>
-            /* Custom CSS retained for template consistency */
-            #f2c .field {
+            #f2c .field 
+			{
                 margin-bottom: 2rem;
             }
-            #result {
+			
+            #result 
+			{
                 background-color: #333333; 
                 color: #f0f0f0;
             }
         </style>
-
 	</head>
+	
 	<body class="is-preload">
 
-		<div id="wrapper">
-
-			<header id="header">
-				<div class="logo">
-					<span class="icon fa-thermometer-half"></span>
-				</div>
-				<div class="content">
-					<div class="inner">
-						<h1>Temperature Converter</h1>
-						<p>Fahrenheit to Celsius</p>
-					</div>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="#f2c">START</a></li>
-					</ul>
-				</nav>
-			</header>
-
-			<div id="main">
-
-				<article id="f2c" class="active"> 
-					<h2 class="major">Fahrenheit to Celsius</h2>
-					
-                    <blockquote style="margin-bottom: 3rem;">
-                        Formula: Celsius = ( ( Fahrenheit - 32 ) &times; 5 ) / 9
-                    </blockquote>
-					
-                    <div class="field">
-						<label for="fah">Enter Fahrenheit:</label>
-						<input id="fah" type="number" name="fah" placeholder="e.g., 77">
-					</div>
-					
-                    <ul class="actions">
-						<li><button onclick="enterFah()" class="button primary">CALCULATE</button></li>
-						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
-					</ul>
-					
-					<hr>
-
-                    <div class="field">
-					    <label for="result">Celsius Conversion:</label>
-					    <input id="result" type="text" name="result" readonly>
-                    </div>
-
-                    <a href="index.html" class="home-link">HOME</a>
-				</article>
-
-			</div>
-
-			<footer id="footer">
-				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-			</footer>
-
+	<div id="wrapper">
+	<header id="header">
+	<div class="logo">
+	<span class="icon fa-thermometer-half"></span>
+	</div>
+		
+	<div class="content">
+		<div class="inner">
+		<h1>Temperature Converter</h1>
+		<p>Fahrenheit to Celsius</p>
 		</div>
+	</div>
+				
+	<nav>
+	<ul>
+	<li><a href="#f2c">START</a></li>
+	</ul>
+	</nav>
+</header>
+
+	<div id="main">
+	<article id="f2c" class="active"> 
+	<h2 class="major">Fahrenheit to Celsius</h2>
+	<blockquote style="margin-bottom: 3rem;">
+    Formula: Celsius = ( ( Fahrenheit - 32 ) &times; 5 ) / 9
+    </blockquote>
+					
+    <div class="field">
+	<label for="fah">Enter Fahrenheit:</label>
+	<input id="fah" type="number" name="fah" placeholder="e.g., 77">
+	</div>
+					
+    <ul class="actions">
+	<li><button onclick="enterFah()" class="button primary">CALCULATE</button></li>
+	<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+	</ul>
+					
+	<hr>
+	<div class="field">
+	<label for="result">Celsius Conversion:</label>
+	<input id="result" type="text" name="result" readonly>
+    </div>
+
+    <a href="index.html" class="home-link">HOME</a>
+	</article>
+	</div>
+
+	<footer id="footer">
+	<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+	</footer>
+	</div>
 
 		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
 		<script src="html5up-dimension/assets/js/browser.min.js"></script>
@@ -81,14 +79,12 @@
 		<script src="html5up-dimension/assets/js/main.js"></script>
 
 		<script>
-            // Changed function name and logic for F to C conversion
-			function enterFah() {
-                // Using the constant for clarity and efficiency: 5/9 is approx 0.5555...
+			function enterFah() 
+			{
                 const CONVERSION_FACTOR = 5 / 9;
-
 				let fahren = parseFloat(document.getElementById("fah").value);
-                
-                if (isNaN(fahren)) {
+                if (isNaN(fahren)) 
+				{
                     document.getElementById("result").value = "Invalid Input";
                     return;
                 }
@@ -98,12 +94,14 @@
 				document.getElementById("result").value = celsh;
 			}
 
-			function clearValues() {
+			function clearValues() 
+			{
 				document.getElementById("fah").value = '';
 				document.getElementById("result").value = '';
 			}
 
-            window.onload = function() { 
+            window.onload = function() 
+			{ 
                 document.body.classList.remove('is-preload'); 
             }
 		</script>
