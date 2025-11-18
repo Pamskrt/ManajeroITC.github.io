@@ -1,0 +1,48 @@
+   <!DOCTYPE html>
+
+ <html>
+
+<body>
+
+    <h2>Feet to Meters Conversion</h2>
+    <p> Formula: Meters = Feet / 3.28084 </p>
+
+    <br><br>
+
+    <label for= "feet"> Enter Feet : </label>
+    <input id = "feet">
+
+    <button onclick="enterFeet()"> CALCULATE </button>
+    <button onclick = "clearValues()"> CLEAR </button>
+
+        <br><br><br>
+        <label for = "result">Meters Conversion : </label>
+        <input id = "result" readonly>
+
+    <script>
+        
+        function enterFeet()
+        {
+            let f = document.getElementById("feet").value*1;
+
+            let meters = f / 3.28084;
+            meters = meters.toFixed(2);
+
+            document.getElementById("enterr").value = meters;
+        }
+
+        function clearValues()
+            {
+                document.getElementById("feet").value = '';
+                document.getElementById("result").value = '';
+            }
+
+
+    </script>
+
+    <br><br><br><br>
+    <a href="main.html">HOME</a>
+
+</body>
+
+ </html>
