@@ -427,7 +427,7 @@ input, select, textarea {
 		textarea:focus {
 			background: rgba(255, 255, 255, 0.075);
 			border-color: #ffffff;
-			box-shadow: 0 0 0 1px #808080;
+			box-shadow: 0 0 0 1px #ffffff;
 		}
 
 	select {
@@ -1660,6 +1660,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
