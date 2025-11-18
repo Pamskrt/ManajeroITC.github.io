@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Dimension by HTML5 UP</title>
+		<title>Average of the First n Numbers</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,23 +19,24 @@
 				</div>
 				<div class="content">
 					<div class="inner">
-						<h1>The Average of the First n Numbers</h1>
+						<h1>Dimension</h1>
+						<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
 					</div>
 				</div>
 				<nav>
 					<ul>
-						<li><a href="main.html">Home</a></li>
-						<li><a href="C2F.html">Celsius → Fahrenheit</a></li>
-						<li><a href="F2C.html">Fahrenheit → Celsius</a></li>
+						<li><a href="main.html">HOME</a></li>
 					</ul>
 				</nav>
 			</header>
 
 			<!-- Main -->
 			<div id="main">
-				<article id="intro">
 
+				<article id="average">
+					<h1>The Average of the First n Numbers</h1>
 					<br>
+
 					<p>
 					<label for="n">Input a value : </label>
 					<input id="n" type="number"></input>
@@ -46,51 +47,16 @@
 					<p id="numbers"></p>
 
 					<h3 id="result"></h3>
-
 				</article>
+
 			</div>
 
 			<!-- Footer -->
 			<footer id="footer">
-				<p class="copyright">&copy; Your Name. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 			</footer>
 
 		</div>
 
-		<!-- BG -->
-		<div id="bg"></div>
-
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-		<script>
-			document.getElementById("display").addEventListener("click", ()=> {
-
-				let n = document.getElementById("n").value*1;
-				let sum, ave, i, ntext;
-
-				sum = 0;
-				ave = 0;
-				ntext = "";
-
-				for (i = 1; i <= n ; i++) 
-				{
-					sum += i;
-				}
-
-				ave = sum / n;
-
-				document.getElementById("numbers").innerHTML = ntext;
-
-				document.getElementById("result").innerHTML=
-				"The Average of the first "+ n + " numbers is " + ave;
-
-			});
-		</script>
-
-	</body>
-</html>
+		<script src="assets/js/jquery.min
