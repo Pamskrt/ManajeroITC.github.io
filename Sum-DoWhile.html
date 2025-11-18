@@ -1,61 +1,151 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<body>
+	<head>
+		<title>Sum of the First n Numbers</title>
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
-    <h1>Sum of the First n Numbers</h1>
-    <br>
-
-    <p>
-    <label for="n">Input a value : </label>
-    <input id="n" type="number"></input>
-    <button id = "display"> DISPLAY NUMBERS </button>
-    </p>
-
-    <br>
-    <p id="numbers"></p>
-
-    <h3 id="result"></h3>
-
-<script>
-
-    document.getElementById("display").addEventListener("click", ()=> {
-
-        let n = document.getElementById("n").value*1;
-        let sum,i,ntext;
-
-        sum = 0;
-        i = 1;
-        ntext = "";
-
-        do 
-        {
-            sum += i ;
-            ntext += i ;
-
-            if (i < n)
-            {
-                ntext += " + ";
+        <style>
+            /* Custom CSS for spacing and result field styling */
+            #sum-calc .field { /* New article ID: 'sum-calc' */
+                margin-bottom: 2rem;
+            }
+            /* Styling for the displayed numbers (the summation formula) */
+            #numbers {
+                font-family: monospace;
+                font-size: 1.2em; /* Slightly larger for the formula */
+                color: #ccc;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                /* Add word-wrap for large sums */
+                word-break: break-all;
+                word-wrap: break-word;
             }
+            /* Styling for the final result */
+            #result {
+                color: #ffffff;
+                font-weight: 600;
+                text-align: center;
+            }
+        </style>
+	</head>
+	<body class="is-preload">
 
-            i++;
+		<div id="wrapper">
 
-        } while (i <= n);
+			<header id="header">
+				<div class="logo">
+					<span class="icon fa-sort-numeric-up"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Math Calculator</h1>
+						<p>Calculate the Sum of a Series</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#sum-calc">START</a></li>
+					</ul>
+				</nav>
+			</header>
 
-        document.getElementById("numbers").innerHTML 
-        = ntext;
+			<div id="main">
 
-        document.getElementById("result").innerHTML=
-        "The sum of the first "+ n + " numbers is " + sum;
+				<article id="sum-calc" class="active"> 
+					<h2 class="major">Sum of the First $n$ Numbers</h2>
+					
+                    <blockquote style="margin-bottom: 3rem;">
+                        Formula: $\text{Sum} = 1 + 2 + 3 + \dots + n$ (or $S_n = \frac{n(n+1)}{2}$)
+                    </blockquote>
+					
+                    <div class="field">
+						<label for="n">Input a positive integer ($n$):</label>
+						<input id="n" type="number" name="n" placeholder="e.g., 10">
+					</div>
+					
+                    <ul class="actions special">
+						<li><button id="display" class="button primary">CALCULATE SUM</button></li>
+                        <li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
+                    
+                                        <p id="numbers"></p>
+                    
+                                        <h3 id="result"></h3>
 
-    });
+					<hr>
 
+                    <a href="index.html" class="home-link">HOME</a>
+				</article>
 
-</script>
+			</div>
 
-<br><br><br><br>
-<a href="index.html">HOME</a>
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 
+		</div>
 
-</body>
+		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
+		<script src="html5up-dimension/assets/js/browser.min.js"></script>
+		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+		<script src="html5up-dimension/assets/js/util.js"></script>
+		<script src="html5up-dimension/assets/js/main.js"></script>
 
+		<script>
+            
+            // Function to handle the calculation and display
+            document.getElementById("display").addEventListener("click", ()=> {
+
+                let n = parseInt(document.getElementById("n").value); // Use parseInt for whole numbers
+                let sum, i, ntext;
+
+                // Input Validation
+                if (isNaN(n) || n <= 0 || !Number.isInteger(n)) {
+                    document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
+                    document.getElementById("result").innerHTML = "";
+                    return;
+                }
+                
+                sum = 0;
+                i = 1;
+                ntext = "";
+
+                // Uses a do-while loop as specified in the original code
+                do 
+                {
+                    sum += i ;
+                    ntext += i ;
+
+                    if (i < n)
+                    {
+                        ntext += " + ";
+                    }
+
+                    i++;
+
+                } while (i <= n);
+
+                document.getElementById("numbers").innerHTML 
+                = ntext;
+
+                document.getElementById("result").innerHTML=
+                "The sum of the first "+ n + " numbers is " + sum;
+
+            });
+            
+            // Function to clear all fields
+            function clearValues() {
+				document.getElementById("n").value = '';
+				document.getElementById("numbers").innerHTML = '';
+                document.getElementById("result").innerHTML = '';
+			}
+            
+            // Remove the 'is-preload' class after the page loads for transitions
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
+		</script>
+	</body>
 </html>
