@@ -1,1 +1,0 @@
-# ManajeroITC.github.io
