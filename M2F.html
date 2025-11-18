@@ -2,75 +2,74 @@
 <html>
 	<head>
 		<title>Meters to Feet Conversion</title>
-            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
+        <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
         <style>
-            /* Custom CSS for spacing and result field styling */
-            #mtf .field { /* Changed ID to 'mtf' for Meters to Feet */
+            #mtf .field 
+			{ 
                 margin-bottom: 2rem;
             }
-            #result {
+			
+            #result 
+			{
                 background-color: #333333; 
                 color: #f0f0f0;
             }
         </style>
 	</head>
+	
 	<body class="is-preload">
+	<div id="wrapper">
+	<header id="header">
+	<div class="logo">
+   	<span class="icon fa-ruler-combined"></span>
+	</div>
+	<div class="content">
+	<div class="inner">
+	<h1>Unit Converter</h1>
+	<p>Meters to Feet</p>
+	</div>
+	</div>
+	<nav>
+	<ul>
+	<li><a href="#mtf">START</a></li>
+	</ul>
+	</nav>
+	</header>
 
-		<div id="wrapper">
-
-			<header id="header">
-				<div class="logo">
-                    <span class="icon fa-ruler-combined"></span>
-				</div>
-				<div class="content">
-					<div class="inner">
-						<h1>Unit Converter</h1>
-						<p>Meters to Feet</p>
-					</div>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="#mtf">START</a></li>
-					</ul>
-				</nav>
-			</header>
-
-			<div id="main">
-                <article id="mtf" class="active"> 
-					<h2 class="major">Meters to Feet Conversion</h2>
+	<div id="main">
+    <article id="mtf" class="active"> 
+	<h2 class="major">Meters to Feet Conversion</h2>
 					
-                    <blockquote style="margin-bottom: 3rem;">
-                        Formula: Feet = Meters &times; 3.28084
-                    </blockquote>
+         <blockquote style="margin-bottom: 3rem;">
+         Formula: Feet = Meters &times; 3.28084
+         </blockquote>
 					
-                    <div class="field">
-						<label for="meter">Enter Meters:</label>
-						<input id="meter" type="number" name="meter" placeholder="e.g., 5">
-					</div>
+    <div class="field">
+	<label for="meter">Enter Meters:</label>
+	<input id="meter" type="number" name="meter" placeholder="e.g., 5">
+	</div>
 					
-                    <ul class="actions">
-						<li><button onclick="enterMeter()" class="button primary">CALCULATE</button></li>
-						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
-					</ul>
+    <ul class="actions">
+	<li><button onclick="enterMeter()" class="button primary">CALCULATE</button></li>
+	<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+	</ul>
 					
-					<hr>
+	<hr>
+	<div class="field">
+	<label for="result">Feet Conversion:</label>
+	<input id="result" type="text" name="result" readonly>
+    </div>
 
-                    <div class="field">
-					    <label for="result">Feet Conversion:</label>
-					    <input id="result" type="text" name="result" readonly>
-                    </div>
+   	<a href="index.html" class="home-link">HOME</a>
+	</article>
+	</div>
 
-                    <a href="index.html" class="home-link">HOME</a>
-				</article>
+		<footer id="footer">
+			<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+		</footer>
 
-			</div>
-
-			<footer id="footer">
-				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-			</footer>
-
-		</div>
+	</div>
 
 		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
 		<script src="html5up-dimension/assets/js/browser.min.js"></script>
@@ -79,32 +78,31 @@
 		<script src="html5up-dimension/assets/js/main.js"></script>
 
 		<script>
-			function enterMeter() {
-                // Get value and convert to number
+			function enterMeter() 
+			{
 				let m = parseFloat(document.getElementById("meter").value);
-                
-                // Input validation
-                if (isNaN(m)) {
-                    document.getElementById("result").value = "Invalid Input";
-                    return;
-                }
+	                if (isNaN(m)) 
+					{
+	                    document.getElementById("result").value = "Invalid Input";
+	                    return;
+	                }
 
-                // Calculation: Feet = Meters * 3.28084
                 let ft = m * 3.28084;
                 ft = ft.toFixed(2);
-
                 document.getElementById("result").value = ft;
             }
 
-			function clearValues() {
+			function clearValues() 
+			{
 				document.getElementById("meter").value = '';
 				document.getElementById("result").value = '';
 			}
 
-            // Remove the 'is-preload' class after the page loads for transitions
-            window.onload = function() { 
+            window.onload = function() 
+			{ 
                 document.body.classList.remove('is-preload'); 
             }
+			
 		</script>
 	</body>
 </html>
