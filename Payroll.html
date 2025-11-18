@@ -167,7 +167,7 @@
         </ul>
         </div>
 
-        <a id="homeButton" href="#payroll-calc" class="button alt">HOME</a>
+        <button id="homeButton" class="button alt">HOME</button>
 		</article>
 
 		</div>
@@ -191,7 +191,13 @@
 		<script src="html5up-dimension/assets/js/util.js"></script>
 		<script src="html5up-dimension/assets/js/main.js"></script>
 
-		<script>            
+		<script>
+			document.getElementById("homeButton").addEventListener("click", (e) => 
+			{
+				e.preventDefault();
+				window.location.hash = "#payroll-calc"; 
+			});
+			
             document.getElementById("yes").addEventListener("click", () => 
             {
                 dlgAreYouSure.returnValue = "yes"; 
