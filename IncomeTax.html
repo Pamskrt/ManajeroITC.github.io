@@ -1,0 +1,70 @@
+  <!DOCTYPE html>
+<html>
+    <body>
+
+        <h1> Income Tax </h1>
+
+        <label for = "income" > Enter Income : </label>
+        <input type="number" id = "income">
+        <button onclick = "calcuIncomeTax()"> CALCULATE </button>
+        <button onclick = "clearValues()"> CLEAR </button>
+
+        <br><br><br>
+        <label for = "result">Income Tax is : </label>
+        <input id = "result" readonly>
+
+        <script>
+
+            function calcuIncomeTax()
+            {
+                let Income = parseFloat(document.getElementById("income").value*1);
+
+                let IncTax;
+
+                if (Income <= 250000)
+                {
+                    IncTax = 0;
+                }
+                else if (250000 < Income && Income <= 400000)
+                {
+                    IncTax = ((Income - 250000) * 0.20);
+                }
+                else if (400000 < Income && Income <= 800000)
+                {
+                    IncTax = (30000 + (Income - 400000) * 0.25);
+                }
+                else if (800000 < Income && Income <= 2000000)
+                {
+                    IncTax = (130000 + (Income - 800000) * 0.30);
+                }
+                else if (2000000 < Income && Income <= 8000000)
+                {
+                    IncTax = (490000 + (Income - 2000000) * 0.32);
+                }
+                else if (Income > 8000000)
+                {
+                    IncTax = (2410000 + (Income - 8000000) * 0.35);
+                }
+
+
+                document.getElementById("result").value = IncTax.toFixed(2) 
+            
+            }
+
+
+            function clearValues()
+            {
+                document.getElementById("income").value = '';
+                document.getElementById("result").value = '';
+            }
+        
+
+        </script>
+
+        <br><br><br><br>
+        <a href="main.html">HOME</a>
+
+
+
+    </body>
+ </html>
