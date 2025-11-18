@@ -1,62 +1,112 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
+	<head>
+		<title>Fahrenheit to Celsius Conversion</title>
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
-    input {
-        padding: 4px 8px;
-    }
+        <style>
+            /* Custom CSS retained for template consistency */
+            #f2c .field {
+                margin-bottom: 2rem;
+            }
+            #result {
+                background-color: #333333; 
+                color: #f0f0f0;
+            }
+        </style>
 
-    button {
-        padding: 6px 12px;
-        margin-left: 5px;
-    }
+	</head>
+	<body class="is-preload">
 
-    a {
-        display: inline-block;
-        margin-top: 20px;
-    }
-</style>
-</head>
-<body>
+		<div id="wrapper">
 
-    <h2>Fahrenheit to Celsius</h2>
-    <p>Formula: Celsius = ( ( Fahrenheit - 32 ) * 5 ) / 9</p>
+			<header id="header">
+				<div class="logo">
+					<span class="icon fa-thermometer-half"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Temperature Converter</h1>
+						<p>Fahrenheit to Celsius</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#f2c">START</a></li>
+					</ul>
+				</nav>
+			</header>
 
-    <br><br>
+			<div id="main">
 
-    <label for="fah">Enter Fahrenheit : </label>
-    <input id="fah">
+				<article id="f2c" class="active"> 
+					<h2 class="major">Fahrenheit to Celsius</h2>
+					
+                    <blockquote style="margin-bottom: 3rem;">
+                        Formula: Celsius = ( ( Fahrenheit - 32 ) &times; 5 ) / 9
+                    </blockquote>
+					
+                    <div class="field">
+						<label for="fah">Enter Fahrenheit:</label>
+						<input id="fah" type="number" name="fah" placeholder="e.g., 77">
+					</div>
+					
+                    <ul class="actions">
+						<li><button onclick="enterFah()" class="button primary">CALCULATE</button></li>
+						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
 
-    <button onclick="enterFah()">CALCULATE</button>
-    <button onclick="clearValues()">CLEAR</button>
+                    <div class="field">
+					    <label for="result">Celsius Conversion:</label>
+					    <input id="result" type="text" name="result" readonly>
+                    </div>
 
-    <br><br><br>
-    <label for="result">Celsius Conversion : </label>
-    <input id="result" readonly>
+                    <a href="index.html" class="home-link">HOME</a>
+				</article>
 
-<script>
-    function enterFah() {
-        let fahren = document.getElementById("fah").value * 1;
+			</div>
 
-        let celsh = ((fahren - 32) * 5) / 9;
-        celsh = celsh.toFixed(2);
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 
-        document.getElementById("result").value = celsh;
-    }
+		</div>
 
-    function clearValues() {
-        document.getElementById("fah").value = '';
-        document.getElementById("result").value = '';
-    }
-</script>
+		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
+		<script src="html5up-dimension/assets/js/browser.min.js"></script>
+		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+		<script src="html5up-dimension/assets/js/util.js"></script>
+		<script src="html5up-dimension/assets/js/main.js"></script>
 
-    <br><br><br><br>
-    <a href="index.html">HOME</a>
+		<script>
+            // Changed function name and logic for F to C conversion
+			function enterFah() {
+                // Using the constant for clarity and efficiency: 5/9 is approx 0.5555...
+                const CONVERSION_FACTOR = 5 / 9;
 
-</body>
+				let fahren = parseFloat(document.getElementById("fah").value);
+                
+                if (isNaN(fahren)) {
+                    document.getElementById("result").value = "Invalid Input";
+                    return;
+                }
+                
+				let celsh = (fahren - 32) * CONVERSION_FACTOR;
+				celsh = celsh.toFixed(2);
+				document.getElementById("result").value = celsh;
+			}
+
+			function clearValues() {
+				document.getElementById("fah").value = '';
+				document.getElementById("result").value = '';
+			}
+
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
+		</script>
+
+	</body>
 </html>
