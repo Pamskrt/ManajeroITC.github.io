@@ -1,41 +1,113 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+    <title>Average of n Numbers</title>
+    <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
+    
+    <style>
+        /* * Since I cannot embed the full 500+ lines of CSS here, 
+         * this is a placeholder. In a real environment, you'd ensure
+         * the 'main.css' link above is valid and contains ALL the Dimension styles.
+         * * The key layout structure and input styles are relied upon from main.css.
+         */
+        
+        /* Custom styles to enhance presentation for this specific content */
+        
+        #main .field {
+            margin-bottom: 2rem;
+        }
 
-<h1>The Average of the First n Numbers</h1>
-<br>
+        /* Styling for the output paragraphs/headings */
+        #numbers {
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
 
-<p>
-    <label for="n">Input a value : </label>
-    <input id="n" type="number">
-    <button id="display">DISPLAY NUMBERS</button>
-</p>
+        #result {
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+        }
 
-<br>
-<p id="numbers"></p>
-<h3 id="result"></h3>
+        /* Styling the HOME link as a button, since it is a navigational element */
+        #main a.button.home-link {
+            margin-top: 2rem;
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.2rem;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    
+    <div id="bg"></div>
 
-<script>
-document.getElementById("display").addEventListener("click", () => {
-    let n = document.getElementById("n").value * 1;
-    let sum = 0;
-    let ntext = "";
+    <div id="wrapper">
+        
+        <div id="main">
+            <article id="average-for" class="active">
+                
+                <h1 class="major">The Average of the First n Numbers</h1>
+                
+                <div class="field">
+                    <label for="n">Input a value:</label>
+                    <input id="n" type="number" placeholder="Enter a positive integer">
+                </div>
+                
+                <ul class="actions special">
+                    <li><button id="display" class="button primary">DISPLAY NUMBERS & CALCULATE</button></li>
+                </ul>
+                
+                <hr>
 
-    for (let i = 1; i <= n; i++) {
-        sum += i;
-        ntext += i + " "; // add each number to ntext
-    }
+                <p id="numbers"></p>
+                <h3 id="result"></h3>
 
-    let ave = sum / n;
+                <hr>
 
-    document.getElementById("numbers").innerHTML = ntext;
-    document.getElementById("result").innerHTML =
-        "The Average of the first " + n + " numbers is " + ave;
-});
-</script>
+                <a href="main.html" class="button home-link">HOME</a>
 
-<br><br><br><br>
-<a href="main.html">HOME</a>
+            </article>
+        </div>
+        
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById("display").addEventListener("click", () => {
+            // Use parseFloat() for robust numerical conversion
+            let n = parseFloat(document.getElementById("n").value); 
+            
+            // Input Validation (Good practice for user-facing inputs)
+            if (isNaN(n) || n <= 0 || !Number.isInteger(n)) {
+                document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
+                document.getElementById("result").innerHTML = "";
+                return;
+            }
+
+            let sum = 0;
+            let ntext = "";
+
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+                ntext += i + " "; // add each number to ntext
+            }
+
+            let ave = sum / n;
+
+            document.getElementById("numbers").innerHTML = ntext;
+            document.getElementById("result").innerHTML =
+                "The Average of the first " + n + " numbers is " + ave.toFixed(2); // Display average with 2 decimal places
+        });
+        
+        // Remove the 'is-preload' class after the page loads
+        window.onload = function() { document.body.classList.remove('is-preload'); }
+    </script>
 
 </body>
 </html>
