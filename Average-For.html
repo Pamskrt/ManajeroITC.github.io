@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Average of First n Numbers</title>
+        <title>Average of the First n Numbers</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
@@ -9,18 +9,16 @@
     </head>
     <body class="is-preload">
 
-        <!-- Wrapper -->
         <div id="wrapper">
 
-            <!-- Header -->
             <header id="header">
                 <div class="logo">
                     <span class="icon fa-gem"></span>
                 </div>
                 <div class="content">
                     <div class="inner">
-                        <h1>Average of First n Numbers</h1>
-                        <p>Compute the average of the first n positive numbers.</p>
+                        <h1>Average Program</h1>
+                        <p>Compute the average of the first 'n' numbers using a For Loop.</p>
                     </div>
                 </div>
                 <nav>
@@ -30,41 +28,40 @@
                 </nav>
             </header>
 
-            <!-- Main -->
             <div id="main">
-                <article id="average">
-                    <div class="inner">
-                        <h2>Enter a number</h2>
-                        <p>
-                            <label for="n">Input a value: </label>
-                            <input id="n" type="number">
-                            <button id="display">DISPLAY NUMBERS</button>
-                        </p>
-                        <br>
-                        <p id="numbers"></p>
-                        <h3 id="result"></h3>
-                    </div>
+
+                <article id="average-program" class="active">
+                    <h2 class="major">The Average of the First n Numbers</h2>
+                    <br>
+
+                    <p>
+                    <label for="n">Input a positive integer $n$: </label>
+                    <input id="n" type="number" min="1"></input>
+                    <button id="display"> CALCULATE AVERAGE </button>
+                    </p>
+
+                    <br>
+                    <p id="numbers"></p>
+
+                    <h3 id="result"></h3>
                 </article>
+
             </div>
 
-            <!-- Footer -->
             <footer id="footer">
                 <p class="copyright">&copy; Your Website. Design based on HTML5 UP Dimension.</p>
             </footer>
 
         </div>
 
-        <!-- Background -->
         <div id="bg"></div>
 
-        <!-- Scripts -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
 
-        <!-- Average Program Script -->
         <script>
             document.getElementById("display").addEventListener("click", () => {
                 let n = parseInt(document.getElementById("n").value);
@@ -86,7 +83,7 @@
                 let ave = sum / n;
 
                 document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
-                document.getElementById("result").innerHTML = "The Average of the first " + n + " numbers is " + ave;
+                document.getElementById("result").innerHTML = "The Average of the first " + n + " numbers is " + ave.toFixed(2); // Added toFixed(2) for clean average display
             });
         </script>
 
