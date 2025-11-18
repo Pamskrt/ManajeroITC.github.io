@@ -1,48 +1,111 @@
-   <!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Feet to Meters Conversion</title>
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
- <html>
+        <style>
+            /* Custom CSS for spacing and result field styling */
+            #ftm .field { /* Changed ID to 'ftm' for Feet to Meters */
+                margin-bottom: 2rem;
+            }
+            #result {
+                background-color: #333333; 
+                color: #f0f0f0;
+            }
+        </style>
+	</head>
+	<body class="is-preload">
 
-<body>
+		<div id="wrapper">
 
-    <h2>Feet to Meters Conversion</h2>
-    <p> Formula: Meters = Feet / 3.28084 </p>
+			<header id="header">
+				<div class="logo">
+                    <span class="icon fa-ruler-combined"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Unit Converter</h1>
+						<p>Feet to Meters</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#ftm">START</a></li>
+					</ul>
+				</nav>
+			</header>
 
-    <br><br>
+			<div id="main">
+                <article id="ftm" class="active"> 
+					<h2 class="major">Feet to Meters Conversion</h2>
+					
+                    <blockquote style="margin-bottom: 3rem;">
+                        Formula: Meters = Feet / 3.28084
+                    </blockquote>
+					
+                    <div class="field">
+						<label for="feet">Enter Feet:</label>
+                        <input id="feet" type="number" name="feet" placeholder="e.g., 10">
+					</div>
+					
+                    <ul class="actions">
+						<li><button onclick="enterFeet()" class="button primary">CALCULATE</button></li>
+						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
 
-    <label for= "feet"> Enter Feet : </label>
-    <input id = "feet">
+                    <div class="field">
+					    <label for="result">Meters Conversion:</label>
+					    <input id="result" type="text" name="result" readonly>
+                    </div>
 
-    <button onclick="enterFeet()"> CALCULATE </button>
-    <button onclick = "clearValues()"> CLEAR </button>
+                    <a href="index.html" class="home-link">HOME</a>
+				</article>
 
-        <br><br><br>
-        <label for = "result">Meters Conversion : </label>
-        <input id = "result" readonly>
+			</div>
 
-    <script>
-        
-        function enterFeet()
-        {
-            let f = document.getElementById("feet").value*1;
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
 
-            let meters = f / 3.28084;
-            meters = meters.toFixed(2);
+		</div>
 
-            document.getElementById("enterr").value = meters;
-        }
+		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
+		<script src="html5up-dimension/assets/js/browser.min.js"></script>
+		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+		<script src="html5up-dimension/assets/js/util.js"></script>
+		<script src="html5up-dimension/assets/js/main.js"></script>
 
-        function clearValues()
-            {
-                document.getElementById("feet").value = '';
-                document.getElementById("result").value = '';
-            }
+		<script>
+			function enterFeet() {
+                // Get value and convert to number
+				let f = parseFloat(document.getElementById("feet").value);
+                
+                // Input validation
+                if (isNaN(f)) {
+                    document.getElementById("result").value = "Invalid Input";
+                    return;
+                }
 
+                // Calculation
+                let meters = f / 3.28084;
+                meters = meters.toFixed(2);
 
-    </script>
+                // FIX: Changed document.getElementById("enterr").value to document.getElementById("result").value
+                document.getElementById("result").value = meters;
+            }
 
-    <br><br><br><br>
-    <a href="index.html">HOME</a>
+			function clearValues() {
+				document.getElementById("feet").value = '';
+				document.getElementById("result").value = '';
+			}
 
-</body>
-
- </html>
+            // Remove the 'is-preload' class after the page loads for transitions
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
+		</script>
+	</body>
+</html>
