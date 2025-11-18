@@ -1,0 +1,248 @@
+ 
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body onload = "initpayroll()">
+
+<h1>Simple Payroll</h1>
+
+<p>
+<label for="empName">Employee Name: </label>
+<input id="empName" name="empName" type="text"></input>
+<br>
+<label for="daysWorked">Days Worked :</label>
+<input id="daysWorked" name="daysWorked" type="number"></input>
+<br>
+<label for="dailyRate">Daily Rate :</label>
+<input id="dailyRate" name="dailyRate" type="number" oninput="cGross()"></input>
+<br>
+<label for="deductionAmount">Deduction Amount :</label>
+<input id="deductionAmount" name="deductionAmount" type="number" oninput="cNet()"></input>
+<br>
+
+<button id = "addEmp">ADD EMPLOYEE</button>
+</p>
+
+<p id="emp"></p>
+
+<p>
+<button id = "clear"> CLEAR LIST </button>
+<br>
+<label for="delEmp"> Remove Employee : </label>
+<input id="delEmp" name="delEmp" type="number"></input>
+<button id = "deleteEmp"> REMOVE </button>  
+</p>
+
+    <dialog id="dlgConfirmCancel">
+        <form method="dialog">
+        <h4 id="dlgmsg"> Clear Employee List? </h4>   
+        <button id="confirmm" value="confirm" > CONFIRM </button>
+        <button id="cancel" value="cancel" > CANCEL </button>
+        </form>
+    </dialog>
+
+    <dialog id="dlgAreYouSure">
+        <form method="dialog">
+        <h4 id="dlgmsg2"> Are you sure? </h4>   
+        <button id="yes" value="yes" > YES </button>
+        <button id="no" value="no" > NO </button>
+        </form>
+    </dialog>
+
+
+<script>
+
+let emp = [];
+
+    function initpayroll()
+    {
+        emp = [];
+        document.getElementById("empName").value = "";
+        document.getElementById("daysWorked").value = "";
+        document.getElementById("dailyRate").value = "";
+        document.getElementById("deductionAmount").value = "";
+        document.getElementById("emp").innerHTML="";
+
+        const cancel = document.getElementById("cancel");
+        const confirmm = document.getElementById("confirmm");
+        const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
+        dlgConfirmCancel.returnValue = "confirm";
+
+            const yes = document.getElementById("yes");
+            const no = document.getElementById("no");
+            const dlgAreYouSure = document.getElementById("dlgAreYouSure");
+            dlgAreYouSure.returnValue = "no";
+
+        showList();
+    }
+
+    document.getElementById("addEmp").addEventListener("click",()=> 
+    {
+        let empName = document.getElementById("empName").value;
+        let daysWorked = parseFloat(document.getElementById("daysWorked").value);
+        let dailyRate = parseFloat(document.getElementById("dailyRate").value);
+        let deductionAmount = parseFloat(document.getElementById("deductionAmount").value);
+
+        let empNo = {
+            empName: empName,
+            daysWorked: daysWorked,
+            dailyRate: dailyRate,
+            deductionAmount: deductionAmount,
+            cGross: function() { return Math.round(this.daysWorked * this.dailyRate); },
+            netPay: function() { return Math.round(this.cGross() - this.deductionAmount); }
+        };
+
+        emp.push(empNo);
+
+        document.getElementById("empName").value = "";
+        document.getElementById("daysWorked").value = "";
+        document.getElementById("dailyRate").value = "";
+        document.getElementById("deductionAmount").value = "";
+
+    showList();
+
+    });
+
+    document.getElementById("clear").addEventListener("click", ()=>
+    {
+        document.getElementById("dlgmsg").innerHTML = "Delete all employees from the list?"  
+        dlgConfirmCancel.showModal();
+        dlgAreYouSure.dataset.action = "clearing";
+    });
+    
+    document.getElementById("deleteEmp").addEventListener("click",()=>
+    {
+        let empNo = document.getElementById("delEmp").value*1;
+        
+        if (!empNo || empNo < 1 || empNo > emp.length) 
+        {
+            alert("Invalid Employee Number");
+            document.getElementById("delEmp").value = "";
+            return;
+        }
+
+        dlgAreYouSure.dataset.action = "deleting";
+        dlgAreYouSure.dataset.empNo = empNo;
+        document.getElementById("dlgmsg2").innerHTML;
+        dlgAreYouSure.showModal();
+    });
+
+    confirmm.addEventListener("click", ()=> 
+    {
+        dlgConfirmCancel.returnValue="confirm";
+        dlgConfirmCancel.close("confirm");
+    });
+
+    cancel.addEventListener("click", ()=> 
+    {
+         dlgConfirmCancel.returnValue="cancel";
+         dlgConfirmCancel.close("cancel");
+    });
+
+    yes.addEventListener("click", () => 
+    {
+        dlgAreYouSure.returnValue="yes";
+        dlgAreYouSure.close("yes");
+    });
+
+    no.addEventListener("click", () => 
+    {
+        dlgAreYouSure.returnValue="no";
+        dlgAreYouSure.close("no");
+    });
+    
+    dlgConfirmCancel.addEventListener("close", (e)=>
+    {
+        let choice1 = e.target.returnValue;
+
+        if (choice1 === "confirm" && dlgAreYouSure.dataset.action === "clearing") 
+        {
+            dlgAreYouSure.showModal();
+        }
+    });
+
+    dlgAreYouSure.addEventListener("close", (e)=>
+    {
+        let choice = e.target.returnValue;
+
+        if (choice === "yes") 
+        {
+            if (dlgAreYouSure.dataset.action === "deleting") 
+            {
+                let x = parseInt(dlgAreYouSure.dataset.empNo, 10) - 1;
+                if (x >= 0 && x < emp.length) 
+                {
+                    emp.splice(x, 1);
+                }
+
+                document.getElementById("delEmp").value = '';
+                delete dlgAreYouSure.dataset.empNo;
+            }
+            else if (dlgAreYouSure.dataset.action === "clearing") 
+            {
+                emp = [];
+            }
+
+        showList();
+        }
+
+    });
+
+    function showList()
+    {
+        let i, l, totalGross, totalDeduct, totalNet, ln;
+        let theader, tbody, tb, tfooter;
+
+        theader = "<thead>";
+        theader += "<tr>";
+        theader += "<th>Employee No.</th>";
+        theader += '<th style="text-align:left" >Employee Name</th>';
+        theader += "<th>Days Worked</th>";
+        theader += '<th style="text-align:right">Daily Rate</th>';
+        theader += "<th>Gross Pay</th>";
+        theader += '<th style="text-align:right">Deduction</th>';
+        theader += "<th>Net Pay</th>";
+        theader += "</tr>";
+        theader += "</thead>";
+        
+        l = emp.length;
+        
+        for (i = 0, totalGross = 0, totalDeduct = 0, totalNet= 0, tbody = ''; i < l; i++)
+        {
+            ln = i + 1;    
+            tbody += "<tr>"
+                +'<td style="text-align:center">' + ln + ' </td>'
+                +'<td style="text-align:center">' + emp[i].empName +' </td>'
+                +'<td style="text-align:right">'+emp[i].daysWorked +'</td>'
+                +'<td style="text-align:right">'+emp[i].dailyRate +'</td>'
+                +'<td style="text-align:right">'+emp[i].cGross() + '</td>'
+                +'<td style="text-align:right">'+emp[i].deductionAmount +'</td>'
+                +'<td style="text-align:right">'+emp[i].netPay() +'</td>' 
+                +"</tr>";
+
+                totalGross += emp[i].cGross();
+                totalDeduct += emp[i].deductionAmount;
+                totalNet += emp[i].netPay();
+        }
+
+        tfooter ="<tfoot>";
+        tfooter+="<tr>";
+        tfooter+='<th style="text-align:left">Total Numbers of Employees: </th>';
+        tfooter+='<th style="text-align:left">'+emp.length+'</th>';
+        tfooter+='<th></th>';
+        tfooter+='<th></th>';
+        tfooter+='<th style="text-align:right">'+totalGross+'</th>';
+        tfooter+='<th style="text-align:right">'+totalDeduct+'</th>';
+        tfooter+='<th style="text-align:right">'+totalNet+'</th>';
+        tfooter+="</tr>";
+        tfooter+="</tfoot>";
+
+        document.getElementById("emp").innerHTML
+        ="<table border='1'>" + theader + tbody + tfooter + "</table>";
+
+    }
+  
+</script>
+</body>
+</html>
