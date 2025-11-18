@@ -140,7 +140,7 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #ffffff;
+		color: #808080;
 		font-family: "Source Sans Pro", sans-serif;
 		font-weight: 300;
 		font-size: 1rem;
@@ -427,7 +427,7 @@ input, select, textarea {
 		textarea:focus {
 			background: rgba(255, 255, 255, 0.075);
 			border-color: #ffffff;
-			box-shadow: 0 0 0 1px #ffffff;
+			box-shadow: 0 0 0 1px #808080;
 		}
 
 	select {
@@ -1659,3 +1659,4 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
