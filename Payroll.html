@@ -191,9 +191,7 @@
 		<script src="html5up-dimension/assets/js/util.js"></script>
 		<script src="html5up-dimension/assets/js/main.js"></script>
 
-		<script>
-            // FIX: Removed window.location.href line for homeButton as the button is now an anchor tag
-            
+		<script>            
             document.getElementById("yes").addEventListener("click", () => 
             {
                 dlgAreYouSure.returnValue = "yes"; 
@@ -255,10 +253,11 @@
             showList();
             });
 
-            document.getElementById("clear").addEventListener("click", (e)=> // FIX: Added 'e'
+            document.getElementById("clear").addEventListener("click", (e)=> 
             {
-                e.preventDefault(); // FIX: Prevents template closure
-                if (emp.length === 0) {
+                e.preventDefault(); 
+                if (emp.length === 0) 
+				{
                     alert("The employee list is already empty.");
                     return;
                 }
@@ -267,9 +266,9 @@
                 dlgAreYouSure.showModal();
             });
 
-            document.getElementById("deleteEmp").addEventListener("click",(e)=> // FIX: Added 'e'
+            document.getElementById("deleteEmp").addEventListener("click",(e)=>
             {
-                e.preventDefault(); // FIX: Prevents template closure
+                e.preventDefault(); 
                 let empNo = parseInt(document.getElementById("delEmp").value);
 
                 if (isNaN(empNo) || empNo < 1 || empNo > emp.length)
