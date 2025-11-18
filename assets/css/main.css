@@ -1660,3 +1660,29 @@ input, select, textarea {
 			opacity: 0;
 		}
 
+
+/* Override styles for calculator */
+#calculator input,
+#calculator button {
+    background-color: #ffffff; /* white background */
+    color: #000000; /* black text */
+    border: 1px solid #000000; /* black border */
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+#calculator input:focus {
+    background-color: #f0f0f0; /* light grey when focused */
+    outline: none;
+}
+
+#calculator p {
+    color: #ffffff; /* keep results visible */
+}
+
+#calculator {
+    background-color: rgba(0,0,0,0.5); /* semi-transparent background */
+    padding: 1rem;
+    border-radius: 8px;
+}
