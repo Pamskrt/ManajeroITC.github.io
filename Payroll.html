@@ -50,7 +50,7 @@
                 background: #ffffff;
                 color: #808080;
                 border: solid 1px rgba(255, 255, 255, 0.2);
-                border-radius: 4px;
+                border-radius: 2px;
                 padding: 2em;
 				text-align: center;
 				max-width: 80%;
@@ -65,25 +65,25 @@
 			
             dialog button 
 			{
-                padding: 0.5em 1.5em; /* Adjusted padding for buttons */
+                padding: 0.5em 0.5em;
                 border-radius: 4px;
                 background: #000000;
-                color: #ffffff;
+                color: #d3d3d3;
                 cursor: pointer;
 				display: inline-block;
-				margin: 0 0.5em; /* Added margin to space the buttons */
+				margin: auto; 
             }
 			
             dialog button#yes 
 			{
                 background: #ffffff;
-				color: #000000; /* Made text dark for contrast */
-				border: solid 1px #000000;
+				color: #000000; 
+				border: solid 2px #000000;
             }
 
             dialog button#no 
             {
-                background: #808080;
+                background: #ffffff;
             }
         </style>
 	</head>
@@ -257,7 +257,7 @@
                     return;
                 }
                 dlgAreYouSure.dataset.action = "clearing";
-                document.getElementById("dlgmsg2").innerHTML = "Are you absolutely sure you want to clear the entire employee list?";
+                document.getElementById("dlgmsg2").innerHTML = "Clear Employee List?";
                 dlgAreYouSure.showModal();
             });
 
