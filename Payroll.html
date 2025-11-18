@@ -2,65 +2,65 @@
 <html>
 	<head>
 		<title>Simple Payroll Calculator</title>
-            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
-        
-                <style>
-            /* New article ID: 'payroll-calc' */
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
+        
+                <style>
+            /* New article ID: 'payroll-calc' */
             #payroll-calc .field {
                 margin-bottom: 1rem;
             }
-            /* Styling for the Payroll Data Input section */
-            #payroll-calc .input-group {
-                background: rgba(255, 255, 255, 0.035);
-                padding: 1.5em;
-                margin-bottom: 2rem;
-                border-radius: 4px;
-            }
-            /* Align the buttons in the actions group */
-            #payroll-calc .actions {
-                justify-content: flex-start;
-                margin-top: 1.5rem;
-            }
-            /* Styling the dynamic table for the Dimension theme */
-            #payroll-calc table {
-                width: 100%;
-                margin-top: 2rem;
-                color: #ffffff;
-                border-collapse: collapse;
-            }
-            #payroll-calc table thead th {
-                color: #ffffff;
-                font-weight: 600;
-                border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-            }
-            #payroll-calc table th, #payroll-calc table td {
-                padding: 0.75em 0.5em;
-                text-align: center;
-            }
-            /* Ensure the dialog box is visible and styled */
-            dialog {
-                background: #1b1f22;
-                color: #ffffff;
-                border: solid 1px #808080;
-                border-radius: 4px;
-                padding: 2em;
-            }
-            dialog h4 {
-                color: #ffffff;
-                margin-top: 0;
-            }
-            /* Style buttons inside dialogs using theme styles */
-            dialog button {
-                padding: 0.5em 1.5em;
-                border-radius: 4px;
-                background: #666;
-                color: #fff;
-                margin: 0 0.5em;
-                cursor: pointer;
-            }
-            dialog button#confirmm {
-                background: #8e104b; /* Primary color hint */
-            }
+            /* Styling for the Payroll Data Input section */
+            #payroll-calc .input-group {
+                background: rgba(255, 255, 255, 0.035);
+                padding: 1.5em;
+                margin-bottom: 2rem;
+                border-radius: 4px;
+            }
+            /* Align the buttons in the actions group */
+            #payroll-calc .actions {
+                justify-content: flex-start;
+                margin-top: 1.5rem;
+            }
+            /* Styling the dynamic table for the Dimension theme */
+            #payroll-calc table {
+                width: 100%;
+                margin-top: 2rem;
+                color: #ffffff;
+                border-collapse: collapse;
+            }
+            #payroll-calc table thead th {
+                color: #ffffff;
+                font-weight: 600;
+                border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+            }
+            #payroll-calc table th, #payroll-calc table td {
+                padding: 0.75em 0.5em;
+                text-align: center;
+            }
+            /* Ensure the dialog box is visible and styled */
+            dialog {
+                background: #1b1f22;
+                color: #ffffff;
+                border: solid 1px #808080;
+                border-radius: 4px;
+                padding: 2em;
+            }
+            dialog h4 {
+                color: #ffffff;
+                margin-top: 0;
+            }
+            /* Style buttons inside dialogs using theme styles */
+            dialog button {
+                padding: 0.5em 1.5em;
+                border-radius: 4px;
+                background: #666;
+                color: #fff;
+                margin: 0 0.5em;
+                cursor: pointer;
+            }
+            dialog button#confirmm {
+                background: #8e104b; /* Primary color hint */
+            }
         </style>
 	</head>
 	<body class="is-preload" onload="initpayroll()">
@@ -89,48 +89,48 @@
 				<article id="payroll-calc" class="active"> 
 					<h2 class="major">Employee Payroll Manager</h2>
 					
-                    <div class="input-group">
-                        <div class="field">
-                            <label for="empName">Employee Name:</label>
-                            <input id="empName" name="empName" type="text" placeholder="Full Name">
-                        </div>
-                        <div class="field">
-                            <label for="daysWorked">Days Worked:</label>
-                            <input id="daysWorked" name="daysWorked" type="number" placeholder="e.g., 20">
-                        </div>
-                        <div class="field">
-                            <label for="dailyRate">Daily Rate:</label>
-                            <input id="dailyRate" name="dailyRate" type="number" placeholder="e.g., 500.00">
-                        </div>
-                        <div class="field">
-                            <label for="deductionAmount">Deduction Amount:</label>
-                            <input id="deductionAmount" name="deductionAmount" type="number" placeholder="e.g., 100.00">
-                        </div>
-                        
-                        <ul class="actions">
-                            <li><button id="addEmp" class="button primary">ADD EMPLOYEE</button></li>
-                        </ul>
-                    </div>
+                    <div class="input-group">
+                        <div class="field">
+                            <label for="empName">Employee Name:</label>
+                            <input id="empName" name="empName" type="text" placeholder="Full Name">
+                        </div>
+                        <div class="field">
+                            <label for="daysWorked">Days Worked:</label>
+                            <input id="daysWorked" name="daysWorked" type="number" placeholder="e.g., 20">
+                        </div>
+                        <div class="field">
+                            <label for="dailyRate">Daily Rate:</label>
+                            <input id="dailyRate" name="dailyRate" type="number" placeholder="e.g., 500.00">
+                        </div>
+                        <div class="field">
+                            <label for="deductionAmount">Deduction Amount:</label>
+                            <input id="deductionAmount" name="deductionAmount" type="number" placeholder="e.g., 100.00">
+                        </div>
+                        
+                        <ul class="actions">
+                            <li><button id="addEmp" class="button primary">ADD EMPLOYEE</button></li>
+                        </ul>
+                    </div>
 
-                    <hr>
+                    <hr>
 
-                    <h3>Employee List:</h3>
-                    <p id="emp"></p>
+                    <h3>Employee List:</h3>
+                    <p id="emp"></p>
 
-                    <div class="box">
-                        <ul class="actions">
-                            <li><button id="clear" class="button">CLEAR LIST</button></li>
-                        </ul>
-                        
-                        <div class="field" style="max-width: 15rem; margin-bottom: 0;">
-                            <label for="delEmp">Remove Employee No. :</label>
-                            <input id="delEmp" name="delEmp" type="number" placeholder="Enter #">
-                        </div>
-                        
-                        <ul class="actions">
-                            <li><button id="deleteEmp" class="button alt">REMOVE</button></li>
-                        </ul>
-                    </div>
+                    <div class="box">
+                        <ul class="actions">
+                            <li><button id="clear" class="button">CLEAR LIST</button></li>
+                        </ul>
+                        
+                        <div class="field" style="max-width: 15rem; margin-bottom: 0;">
+                            <label for="delEmp">Remove Employee No. :</label>
+                            <input id="delEmp" name="delEmp" type="number" placeholder="Enter #">
+                        </div>
+                        
+                        <ul class="actions">
+                            <li><button id="deleteEmp" class="button alt">REMOVE</button></li>
+                        </ul>
+                    </div>
 
                     <a href="index.html" class="home-link">HOME</a>
 				</article>
@@ -143,7 +143,7 @@
 
 		</div>
 
-        <dialog id="dlgConfirmCancel">
+        <dialog id="dlgConfirmCancel">
             <form method="dialog">
             <h4 id="dlgmsg"> Clear Employee List? </h4>   
             <button id="confirmm" value="confirm" > CONFIRM </button>
@@ -254,39 +254,43 @@
 
             confirmm.addEventListener("click", ()=>
             {
-                dlgConfirmCancel.returnValue="confirm";
-                dlgConfirmCancel.close("confirm");
+                // NO NEED TO MANUALLY CLOSE HERE: The dialog's <form method="dialog"> and value="confirm" handle closing
+                // Ensure returnValue is set for the handler below
+                dlgConfirmCancel.returnValue = "confirm"; 
             });
 
             cancel.addEventListener("click", ()=>
             {
+                // NO NEED TO MANUALLY CLOSE HERE: The dialog's <form method="dialog"> and value="cancel" handle closing
+                // Ensure returnValue is set for the handler below
                 dlgConfirmCancel.returnValue="cancel";
-                dlgConfirmCancel.close("cancel");
             });
 
             yes.addEventListener("click", () =>
             {
+                // NO NEED TO MANUALLY CLOSE HERE
                 dlgAreYouSure.returnValue="yes";
-                dlgAreYouSure.close("yes");
             });
 
             no.addEventListener("click", () =>
             {
+                // NO NEED TO MANUALLY CLOSE HERE
                 dlgAreYouSure.returnValue="no";
-                dlgAreYouSure.close("no");
             });
 
+            // FIX APPLIED HERE: The clear list confirmation flow
             dlgConfirmCancel.addEventListener("close", (e)=>
             {
                 let choice1 = e.target.returnValue;
 
-                // Only proceed to the secondary confirmation if the user clicked confirm AND the action is clearing
+                // If CONFIRM was clicked AND the action is 'clearing', we trigger the second modal.
                 if (choice1 === "confirm" && dlgConfirmCancel.dataset.action === "clearing")
                 {
                     dlgAreYouSure.dataset.action = "clearing"; // Set action on second dialog
                     document.getElementById("dlgmsg2").innerHTML = "Are you absolutely sure you want to clear the entire list?";
                     dlgAreYouSure.showModal();
                 }
+                // If CANCEL was clicked, the dialog closes, and no action is taken.
             });
 
             dlgAreYouSure.addEventListener("close", (e)=>
@@ -373,7 +377,6 @@
                 tfooter+="</tr>";
                 tfooter+="</tfoot>";
 
-                // Replaced <table border='1'> with just <table> and added class "alt" for optional template styling
                 document.getElementById("emp").innerHTML
                 ="<div class='table-wrapper'><table>" + theader + '<tbody>' + tbody + '</tbody>' + tfooter + "</table></div>";
             }
