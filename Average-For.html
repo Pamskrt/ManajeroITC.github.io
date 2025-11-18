@@ -1,110 +1,148 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Average of n Numbers</title>
     <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
-    
+    
     <style>
-        #main .field 
-        {
-            margin-bottom: 2rem;
-        }
-        
-        #numbers 
-        {
-            font-family: monospace;
-            font-size: 1.1em;
-            color: #ccc;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-        
-        #n 
-        {
-            background-color: #000000;
-            color: #f0f0f0; 
-            border: 1px solid #777;
-        }
+        #average-calc .field 
+        {
+            margin-bottom: 2rem;
+        }
+        
+        #numbers 
+        {
+            font-family: monospace;
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        #n 
+        {
+            background-color: #000000;
+            color: #f0f0f0; 
+            border: 1px solid #777;
+        }
 
-        #result 
-        {
-            color: #ffffff;
-            font-weight: 600;
-            text-align: center;
-        }
+        #result 
+        {
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+        }
 
-        #main a.button.home-link 
-        {
-            margin-top: 2rem;
-            display: inline-block;
-            font-size: 0.8rem;
-            letter-spacing: 0.2rem;
-        }
+        #average-calc a.button.home-link 
+        {
+            margin-top: 2rem;
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.2rem;
+        }
     </style>
 </head>
-    
+    
 <body class="is-preload">
-    
-    <div id="bg"></div>
+    
     <div id="wrapper">
-    <div id="main">
-        <article id="average-for" class="active">
-        <h1 class="major">The Average of the First n Numbers</h1>
-                
-    <div class="field">
-         <label for="n">Input a value:</label>
-         <input id="n" type="number">
-    </div>
-                
-    <ul class="actions special">
-    <li><button id="display" class="button primary">DISPLAY NUMBERS & CALCULATE</button></li>
-    </ul>
-                
-    <hr>
-    <p id="numbers"></p>
-    <h3 id="result"></h3>
+	    <header id="header">
+		    <div class="logo">
+			    <span class="icon fa-calculator"></span>
+		    </div>
+		    <div class="content">
+			    <div class="inner">
+				    <h1>Math Calculator</h1>
+				    <p>Calculate the Average of the first $n$ numbers</p>
+			    </div>
+		    </div>
+		    <nav>
+			    <ul>
+				    <li><a href="#average-calc">START</a></li>
+			    </ul>
+		    </nav>
+	    </header>
 
-    <hr>
-    <a href="index.html" class="button home-link">HOME</a>
+	    <div id="main">
+            <article id="average-calc" class="active">
+                <h2 class="major">Average of $n$ Numbers</h2>
+                <p>Calculates the average of the sequence of integers from 1 up to the number you enter.</p>
+                                
+                <div class="field">
+                    <label for="n">Input a positive whole number ($n$):</label>
+                    <input id="n" type="number" name="n" placeholder="e.g., 10">
+                </div>
+                                
+                <ul class="actions special">
+                    <li><button id="calculate" class="button primary">CALCULATE AVERAGE</button></li>
+                    <li><button onclick="clearValues()" class="button">CLEAR</button></li>
+                </ul>
+                                
+                <hr>
+                <p id="numbers"></p>
+                <h3 id="result"></h3>
 
-    </article>
+                <hr>
+                <a href="index.html" class="button home-link">HOME</a>
+
+            </article>
+	    </div>
+        
+	    <footer id="footer">
+		    <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+	    </footer>
     </div>
-        
-<footer id="footer">
-    <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-</footer>
-    </div>
+    
+    <script src="html5up-dimension/assets/js/jquery.min.js"></script>
+    <script src="html5up-dimension/assets/js/browser.min.js"></script>
+    <script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+    <script src="html5up-dimension/assets/js/util.js"></script>
+    <script src="html5up-dimension/assets/js/main.js"></script>
 
     <script>
-        document.getElementById("display").addEventListener("click", () => 
+        document.getElementById("calculate").addEventListener("click", () => 
         {
-            let n = parseFloat(document.getElementById("n").value); 
-            if (isNaN(n) || n <= 0 || !Number.isInteger(n)) 
+            // Use parseInt for whole numbers (as average of "first n" implies integers)
+            let n = parseInt(document.getElementById("n").value); 
+            
+            if (isNaN(n) || n <= 0 || !Number.isInteger(n)) 
             {
-                    document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
-                    document.getElementById("result").innerHTML = "";
-                    return;
+                document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
+                document.getElementById("result").innerHTML = "";
+                return;
             }
-    
+    
             let sum = 0;
             let ntext = "";
-            for (let i = 1; i <= n; i++) 
+            let separator = "";
+            
+            for (let i = 1; i <= n; i++) 
             {
                 sum += i;
-                ntext += i + " ";
+                ntext += separator + i;
+                // Add a space separator, but not after the last number
+                separator = " "; 
             }
-            
+            
             let ave = sum / n;
-                document.getElementById("numbers").innerHTML = ntext;
-                document.getElementById("result").innerHTML =
-                "The Average of the first " + n + " numbers is " + ave.toFixed(2); 
+            
+            document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
+            document.getElementById("result").innerHTML =
+            "The Average of the first " + n + " numbers is " + ave.toFixed(2); 
         });
         
-        window.onload = function() 
-        { 
-            document.body.classList.remove('is-preload'); 
+        function clearValues() 
+        {
+            document.getElementById("n").value = '';
+            document.getElementById("numbers").innerHTML = '';
+            document.getElementById("result").innerHTML = '';
         }
-        
+        
+        window.onload = function() 
+        { 
+            document.body.classList.remove('is-preload'); 
+        }
+        
     </script>
 
 </body>
