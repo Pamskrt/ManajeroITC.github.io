@@ -9,14 +9,6 @@
 </head>
 <body class="is-preload">
 
-    <div id="calculator">
-    <h1>Average Calculator</h1>
-    <label for="n">Input a value:</label>
-    <input id="n" type="number">
-    <button onclick="calculateAverage()">Calculate</button>
-    <p id="result"></p>
-</div>
-
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -40,7 +32,6 @@
             <p>
                 <label for="n">Input a value: </label>
                 <input id="n" type="number" placeholder="Enter a number" />
-                <button id="display" class="button primary">DISPLAY NUMBERS</button>
             </p>
 
             <p id="numbers"></p>
@@ -71,16 +62,22 @@
 
 <!-- Your Average Calculator Script -->
 <script>
-document.getElementById("display").addEventListener("click", () => {
-    let n = document.getElementById("n").value * 1;
-    let sum = 0, ave = 0, ntext = "";
+const input = document.getElementById("n");
 
+input.addEventListener("input", () => {
+    let n = Number(input.value);
+    if (n <= 0 || isNaN(n)) {
+        document.getElementById("numbers").innerHTML = "";
+        document.getElementById("result").innerHTML = "";
+        return;
+    }
+
+    let sum = 0, ntext = "";
     for (let i = 1; i <= n; i++) {
         sum += i;
         ntext += i + (i < n ? ", " : "");
     }
-
-    ave = sum / n;
+    let ave = sum / n;
 
     document.getElementById("numbers").innerHTML = ntext;
     document.getElementById("result").innerHTML =
