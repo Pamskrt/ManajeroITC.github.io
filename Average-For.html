@@ -59,4 +59,37 @@
 		</div>
 
 		<!-- Scripts -->
-		<script src="assets/js/jquery.min
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<!-- Your JS -->
+		<script>
+			document.getElementById("display").addEventListener("click", ()=> {
+
+				let n = document.getElementById("n").value*1;
+				let sum, ave, i, ntext;
+
+				sum = 0;
+				ave = 0;
+				ntext = "";
+
+				for (i = 1; i <= n ; i++) 
+				{
+					sum += i;
+				}
+
+				ave = sum / n;
+
+				document.getElementById("numbers").innerHTML = ntext;
+
+				document.getElementById("result").innerHTML=
+				"The Average of the first "+ n + " numbers is " + ave;
+
+			});
+		</script>
+
+	</body>
+</html>
