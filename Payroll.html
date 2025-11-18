@@ -2,7 +2,8 @@
 <html>
 	<head>
 		<title>Simple Payroll Calculator</title>
-            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
+        
+        <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
         
                 <style>
             /* New article ID: 'payroll-calc' */
@@ -159,14 +160,14 @@
             </form>
         </dialog>
 
-		<script src="html5up-dimension/assets/js/jquery.min.js"></script>
+        <script src="html5up-dimension/assets/js/jquery.min.js"></script>
 		<script src="html5up-dimension/assets/js/browser.min.js"></script>
 		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
 		<script src="html5up-dimension/assets/js/util.js"></script>
 		<script src="html5up-dimension/assets/js/main.js"></script>
 
 		<script>
-            // All JavaScript logic is retained exactly as provided, with minor clean-up.
+            // --- FIX APPLIED HERE: Using e.preventDefault() to ensure dialogs don't prematurely close/exit ---
 
             let emp = [];
 
@@ -211,7 +212,7 @@
                     daysWorked: daysWorked,
                     dailyRate: dailyRate,
                     deductionAmount: deductionAmount,
-                    // Note: Removed oninput calls in HTML, calculations are done here dynamically.
+                    // Calculation functions
                     cGross: function() { return Math.round(this.daysWorked * this.dailyRate); },
                     netPay: function() { return Math.round(this.cGross() - this.deductionAmount); }
                 };
@@ -231,7 +232,7 @@
             {
                 document.getElementById("dlgmsg").innerHTML = "Delete all employees from the list?";
                 dlgConfirmCancel.showModal();
-                // Use the data attribute on the first dialog (or a shared state) to indicate action
+                // Set action flag
                 dlgConfirmCancel.dataset.action = "clearing";
             });
 
@@ -252,47 +253,53 @@
                 dlgAreYouSure.showModal();
             });
 
-            confirmm.addEventListener("click", ()=>
+            // --- FIXED DIALOG BUTTONS ---
+            confirmm.addEventListener("click", (e) =>
             {
-                // NO NEED TO MANUALLY CLOSE HERE: The dialog's <form method="dialog"> and value="confirm" handle closing
-                // Ensure returnValue is set for the handler below
-                dlgConfirmCancel.returnValue = "confirm"; 
+                e.preventDefault(); // Prevents immediate form submission/exit
+                dlgConfirmCancel.returnValue = "confirm";
+                dlgConfirmCancel.close();
             });
 
-            cancel.addEventListener("click", ()=>
+            cancel.addEventListener("click", (e) =>
             {
-                // NO NEED TO MANUALLY CLOSE HERE: The dialog's <form method="dialog"> and value="cancel" handle closing
-                // Ensure returnValue is set for the handler below
-                dlgConfirmCancel.returnValue="cancel";
+                e.preventDefault(); // Prevents immediate form submission/exit
+                dlgConfirmCancel.returnValue = "cancel";
+                dlgConfirmCancel.close();
             });
 
-            yes.addEventListener("click", () =>
+            yes.addEventListener("click", (e) =>
             {
-                // NO NEED TO MANUALLY CLOSE HERE
-                dlgAreYouSure.returnValue="yes";
+                e.preventDefault(); // Prevents immediate form submission/exit
+                dlgAreYouSure.returnValue = "yes";
+                dlgAreYouSure.close();
             });
 
-            no.addEventListener("click", () =>
+            no.addEventListener("click", (e) =>
             {
-                // NO NEED TO MANUALLY CLOSE HERE
-                dlgAreYouSure.returnValue="no";
+                e.preventDefault(); // Prevents immediate form submission/exit
+                dlgAreYouSure.returnValue = "no";
+                dlgAreYouSure.close();
             });
+            // --- END FIXED DIALOG BUTTONS ---
 
-            // FIX APPLIED HERE: The clear list confirmation flow
+
+            // This handles the transition from the first dialog to the second for CLEAR
             dlgConfirmCancel.addEventListener("close", (e)=>
             {
                 let choice1 = e.target.returnValue;
 
-                // If CONFIRM was clicked AND the action is 'clearing', we trigger the second modal.
                 if (choice1 === "confirm" && dlgConfirmCancel.dataset.action === "clearing")
                 {
                     dlgAreYouSure.dataset.action = "clearing"; // Set action on second dialog
                     document.getElementById("dlgmsg2").innerHTML = "Are you absolutely sure you want to clear the entire list?";
                     dlgAreYouSure.showModal();
                 }
-                // If CANCEL was clicked, the dialog closes, and no action is taken.
+                // If choice is 'cancel', nothing happens, and the list remains.
             });
 
+
+            // This handles the final action for both DELETE and CLEAR
             dlgAreYouSure.addEventListener("close", (e)=>
             {
                 let choice = e.target.returnValue;
