@@ -1,70 +1,166 @@
-  <!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-    <body>
+	<head>
+		<title>Income Tax Calculator</title>
+            	<link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
-        <h1> Income Tax </h1>
+        <style>
+            /* Custom CSS for spacing and result field styling */
+            #tax-calc .field { /* New article ID: 'tax-calc' */
+                margin-bottom: 2rem;
+            }
+            #result {
+                background-color: #333333; 
+                color: #f0f0f0;
+            }
+            /* Styling for the tax bracket table */
+            #tax-calc table {
+                width: 100%;
+                font-size: 0.9em;
+                margin-bottom: 3rem;
+            }
+            #tax-calc table th {
+                text-align: left;
+                padding-right: 1em;
+            }
+        </style>
+	</head>
+	<body class="is-preload">
 
-        <label for = "income" > Enter Income : </label>
-        <input type="number" id = "income">
-        <button onclick = "calcuIncomeTax()"> CALCULATE </button>
-        <button onclick = "clearValues()"> CLEAR </button>
+		<div id="wrapper">
 
-        <br><br><br>
-        <label for = "result">Income Tax is : </label>
-        <input id = "result" readonly>
+			<header id="header">
+				<div class="logo">
+					<span class="icon fa-chart-line"></span>
+				</div>
+				<div class="content">
+					<div class="inner">
+						<h1>Financial Calculator</h1>
+						<p>Philippine Income Tax</p>
+					</div>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="#tax-calc">START</a></li>
+					</ul>
+				</nav>
+			</header>
 
-        <script>
+			<div id="main">
 
-            function calcuIncomeTax()
-            {
-                let Income = parseFloat(document.getElementById("income").value*1);
+				<article id="tax-calc" class="active"> 
+					<h2 class="major">Annual Income Tax</h2>
+					
+                    <p style="text-align: center; margin-bottom: 1rem;">**Tax Rate Summary (TRAIN Law)**</p>
+                    <div class="box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Taxable Income</th>
+                                    <th>Tax Due</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Up to &ddagger;250,000</td><td>0%</td></tr>
+                                <tr><td>Over &ddagger;250k to &ddagger;400k</td><td>20% of the excess</td></tr>
+                                <tr><td>Over &ddagger;400k to &ddagger;800k</td><td>&ddagger;30k + 25% of the excess</td></tr>
+                                <tr><td>Over &ddagger;800k to &ddagger;2M</td><td>&ddagger;130k + 30% of the excess</td></tr>
+                                <tr><td>Over &ddagger;2M to &ddagger;8M</td><td>&ddagger;490k + 32% of the excess</td></tr>
+                                <tr><td>Over &ddagger;8M</td><td>&ddagger;2.41M + 35% of the excess</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+					
+                    <div class="field">
+						<label for="income">Enter Annual Taxable Income:</label>
+						<input id="income" type="number" name="income" placeholder="e.g., 500000">
+					</div>
+					
+                    <ul class="actions">
+						<li><button onclick="calcuIncomeTax()" class="button primary">CALCULATE TAX</button></li>
+						<li><button onclick="clearValues()" class="button">CLEAR</button></li>
+					</ul>
+					
+					<hr>
 
-                let IncTax;
+                    <div class="field">
+					    <label for="result">Computed Annual Income Tax:</label>
+					    <input id="result" type="text" name="result" readonly>
+                    </div>
 
-                if (Income <= 250000)
-                {
-                    IncTax = 0;
+                    <a href="index.html" class="home-link">HOME</a>
+				</article>
+
+			</div>
+
+			<footer id="footer">
+				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+			</footer>
+
+		</div>
+
+		<script src="html5up-dimensionassets/js/jquery.min.js"></script>
+		<script src="html5up-dimensionassets/js/browser.min.js"></script>
+		<script src="html5up-dimensionassets/js/breakpoints.min.js"></script>
+		<script src="html5up-dimensionassets/js/util.js"></script>
+		<script src="html5up-dimensionassets/js/main.js"></script>
+
+		<script>
+
+			function calcuIncomeTax()
+			{
+				let Income = parseFloat(document.getElementById("income").value);
+
+                // Input Validation
+                if (isNaN(Income) || Income < 0) {
+                    document.getElementById("result").value = "Please enter a valid income.";
+                    return;
                 }
-                else if (250000 < Income && Income <= 400000)
-                {
-                    IncTax = ((Income - 250000) * 0.20);
-                }
-                else if (400000 < Income && Income <= 800000)
-                {
-                    IncTax = (30000 + (Income - 400000) * 0.25);
-                }
-                else if (800000 < Income && Income <= 2000000)
-                {
-                    IncTax = (130000 + (Income - 800000) * 0.30);
-                }
-                else if (2000000 < Income && Income <= 8000000)
-                {
-                    IncTax = (490000 + (Income - 2000000) * 0.32);
-                }
-                else if (Income > 8000000)
-                {
-                    IncTax = (2410000 + (Income - 8000000) * 0.35);
-                }
+                
+				let IncTax;
+
+				if (Income <= 250000)
+				{
+					IncTax = 0;
+				}
+				else if (Income <= 400000) // 250,000 < Income <= 400,000
+				{
+					IncTax = ((Income - 250000) * 0.20);
+				}
+				else if (Income <= 800000) // 400,000 < Income <= 800,000
+				{
+					IncTax = (30000 + (Income - 400000) * 0.25);
+				}
+				else if (Income <= 2000000) // 800,000 < Income <= 2,000,000
+				{
+					IncTax = (130000 + (Income - 800000) * 0.30);
+				}
+				else if (Income <= 8000000) // 2,000,000 < Income <= 8,000,000
+				{
+					IncTax = (490000 + (Income - 2000000) * 0.32);
+				}
+				else // Income > 8,000,000
+				{
+					IncTax = (2410000 + (Income - 8000000) * 0.35);
+				}
 
 
-                document.getElementById("result").value = IncTax.toFixed(2) 
+				document.getElementById("result").value = IncTax.toFixed(2);
+			
+			}
+
+
+			function clearValues()
+			{
+				document.getElementById("income").value = '';
+				document.getElementById("result").value = '';
+			}
             
-            }
+			// Remove the 'is-preload' class after the page loads for transitions
+            window.onload = function() { 
+                document.body.classList.remove('is-preload'); 
+            }
 
-
-            function clearValues()
-            {
-                document.getElementById("income").value = '';
-                document.getElementById("result").value = '';
-            }
-        
-
-        </script>
-
-        <br><br><br><br>
-        <a href="index.html">HOME</a>
-
-
-
-    </body>
- </html>
+		</script>
+	</body>
+</html>
