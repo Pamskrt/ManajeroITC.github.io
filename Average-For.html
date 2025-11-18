@@ -52,8 +52,8 @@
 		    </div>
 		    <div class="content">
 			    <div class="inner">
-				    <h1>Math Calculator</h1>
-				    <p>Calculate the Average of the first $n$ numbers</p>
+				    <h1>Calculator</h1>
+				    <p>The Average of the first n numbers</p>
 			    </div>
 		    </div>
 		    <nav>
@@ -65,11 +65,11 @@
 
 	    <div id="main">
             <article id="average-calc" class="active">
-                <h2 class="major">Average of $n$ Numbers</h2>
+                <h2 class="major">Average of n Numbers</h2>
                 <p>Calculates the average of the sequence of integers from 1 up to the number you enter.</p>
                                 
                 <div class="field">
-                    <label for="n">Input a positive whole number ($n$):</label>
+                    <label for="n">Input a positive whole number :</label>
                     <input id="n" type="number" name="n" placeholder="e.g., 10">
                 </div>
                                 
@@ -102,9 +102,7 @@
     <script>
         document.getElementById("calculate").addEventListener("click", () => 
         {
-            // Use parseInt for whole numbers (as average of "first n" implies integers)
             let n = parseInt(document.getElementById("n").value); 
-            
             if (isNaN(n) || n <= 0 || !Number.isInteger(n)) 
             {
                 document.getElementById("numbers").innerHTML = "Please enter a valid positive whole number.";
@@ -120,7 +118,6 @@
             {
                 sum += i;
                 ntext += separator + i;
-                // Add a space separator, but not after the last number
                 separator = " "; 
             }
             
