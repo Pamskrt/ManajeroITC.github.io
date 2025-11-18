@@ -1,385 +1,736 @@
 <!DOCTYPE HTML>
+
 <html>
-	<head>
-	<title>Simple Payroll Calculator</title>
+
+<head>
+
+<title>Simple Payroll Calculator</title>
+
     <link rel="stylesheet" href="html5up-dimension/assets/css/main.css">
 
-    <style>
-        #payroll-calc .field 
-        {
-            margin-bottom: 1rem;
-        }
+        
 
-        #payroll-calc .input-group 
-        {
-            background: rgba(255, 255, 255, 0.035);
-            padding: 1.5em;
-            margin-bottom: 2rem;
-            border-radius: 4px;
-        }
+        <style>
 
-        #payroll-calc .actions 
-        {
-            justify-content: flex-start;
-            margin-top: 1.5rem;
-        }
+            #payroll-calc .field 
 
-        #payroll-calc table 
-        {
-            width: 100%;
-            margin-top: 2rem;
-            color: #ffffff;
-            border-collapse: collapse;
-        }
+{
 
-        #payroll-calc table thead th 
-        {
-            color: #ffffff;
-            font-weight: 600;
-            border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-        }
+                margin-bottom: 1rem;
 
-        #payroll-calc table th, #payroll-calc table td 
-        {
-            padding: 0.75em 0.5em;
-            text-align: center;
-        }
+            }
 
-        dialog 
-        {
-            background: #d3d3d3;
-            color: #000000;
-            border: solid 4px rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            padding: 2em;
-            text-align: center;
-            max-width: 80%;
-            margin: auto;
-        }
 
-        dialog h4 
-        {
-            color: #000000;
-            margin: auto;
-        }
+            #payroll-calc .input-group 
 
-        dialog button 
-        {
-            padding: 0.5em 0.5em;
-            border: solid 3px rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            background: #000000;
-            color: #d3d3d3;
-            cursor: pointer;
-            display: inline-block;
-            margin: auto; 
-        }
+{
 
-        dialog button#yes 
-        {
-            padding: 0.5em 0.5em;
-            border: solid 3px rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            background: #ffffff;
-            color: #000000;
-            cursor: pointer;
-            display: inline-block;
-            margin: auto; 
-        }
+                background: rgba(255, 255, 255, 0.035);
 
-        dialog button#no 
-        {
-            padding: 0.5em 0.5em;
-            border: solid 3px rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            background: #ffffff;
-            color: #000000;
-            cursor: pointer;
-            display: inline-block;
-            margin: auto; 
-        }
-    </style>
-	</head>
+                padding: 1.5em;
 
-	<body class="is-preload" onload="initpayroll()">
-	<div id="wrapper">
+                margin-bottom: 2rem;
 
-	<header id="header">
-	<div class="logo">
-	<span class="icon fa-file-invoice-dollar"></span>
-	</div>
-	<div class="content">
-	<div class="inner">
-	<h1>Payroll System</h1>
-	<p>Simple Employee Data and Net Pay Calculation</p>
-	</div>
-	</div>
-	<nav>
-	<ul>
-	<li><a href="#payroll-calc">START</a></li>
-	</ul>
-	</nav>
-	</header>
+                border-radius: 4px;
 
-	<div id="main">
-	<article id="payroll-calc" class="active"> 
-		<h2 class="major">Employee Data</h2>
+            }
 
-		<div class="input-group">
 
-		<div class="field">
+            #payroll-calc .actions 
+
+{
+
+                justify-content: flex-start;
+
+                margin-top: 1.5rem;
+
+            }
+
+
+            #payroll-calc table 
+
+{
+
+                width: 100%;
+
+                margin-top: 2rem;
+
+                color: #ffffff;
+
+                border-collapse: collapse;
+
+            }
+
+
+            #payroll-calc table thead th 
+
+{
+
+                color: #ffffff;
+
+                font-weight: 600;
+
+                border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+
+            }
+
+
+            #payroll-calc table th, #payroll-calc table td 
+
+{
+
+                padding: 0.75em 0.5em;
+
+                text-align: center;
+
+            }
+
+
+            dialog 
+
+{
+
+                background: #d3d3d3;
+
+                color: #000000;
+
+                border: solid 4px rgba(255, 255, 255, 0.2);
+
+                border-radius: 2px;
+
+                padding: 2em;
+
+text-align: center;
+
+max-width: 80%;
+
+margin: auto;
+
+            }
+
+
+            dialog h4 
+
+{
+
+                color: #000000;
+
+                margin: auto;
+
+            }
+
+
+            dialog button 
+
+{
+
+                padding: 0.5em 0.5em;
+
+border: solid 3px rgba(255, 255, 255, 0.2);
+
+                border-radius: 2px;
+
+                background: #000000;
+
+                color: #d3d3d3;
+
+                cursor: pointer;
+
+display: inline-block;
+
+margin: auto; 
+
+            }
+
+
+            dialog button#yes 
+
+{
+
+                padding: 0.5em 0.5em;
+
+                border-radius: 4px;
+
+                background: #ffffff;
+
+                color: #000000;
+
+max-width: 15rem;
+
+margin-bottom: 0;
+
+            }
+
+
+
+            dialog button#no 
+
+            {
+
+                padding: 0.5em 0.5em;
+
+                border-radius: 4px;
+
+                background: #ffffff;
+
+                color: #000000;
+
+                max-width: 15rem;
+
+margin-bottom: 0;
+
+            }
+
+        </style>
+
+</head>
+
+
+<body class="is-preload" onload="initpayroll()">
+
+<div id="wrapper">
+
+
+
+<header id="header">
+
+<div class="logo">
+
+<span class="icon fa-file-invoice-dollar"></span>
+
+</div>
+
+<div class="content">
+
+<div class="inner">
+
+<h1>Payroll System</h1>
+
+<p>Simple Employee Data and Net Pay Calculation</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<ul>
+
+<li><a href="#payroll-calc">START</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+
+
+<div id="main">
+
+<article id="payroll-calc" class="active"> 
+
+<h2 class="major">Employee Data</h2>
+
+
+<div class="input-group">
+
+        
+
+<div class="field">
+
         <label for="empName">Employee Name:</label>
+
         <input id="empName" name="empName" type="text" placeholder="Name">
+
         </div>
 
+
         <div class="field">
+
         <label for="daysWorked">Days Worked:</label>
+
         <input id="daysWorked" name="daysWorked" type="number">
+
         </div>
+
 
         <div class="field">
+
         <label for="dailyRate">Daily Rate:</label>
+
         <input id="dailyRate" name="dailyRate" type="number">
+
         </div>
 
-		<div class="field">
+                        
+
+<div class="field">
+
         <label for="deductionAmount">Deduction Amount:</label>
+
         <input id="deductionAmount" name="deductionAmount" type="number">
+
         </div>
+
+                        
 
         <ul class="actions">
+
         <li><button id="addEmp" class="button primary">ADD EMPLOYEE</button></li>
+
         </ul>
+
         </div>
+
+
 
         <hr>
-		<h3>Employee List:</h3>
+
+<h3>Employee List:</h3>
+
         <p id="emp"></p>
-		<div class="box">
+
+<div class="box">
+
 
         <ul class="actions">
+
         <li><button id="clear" class="button">CLEAR LIST</button></li>
+
         </ul>
+
+                        
 
         <div class="field" style="max-width: 15rem; margin-bottom: 0;">
+
         <label for="delEmp">Remove Employee No. :</label>
+
         <input id="delEmp" name="delEmp" type="number" >
+
         </div>
+
+                        
 
         <ul class="actions">
+
         <li><button id="deleteEmp" class="button alt">REMOVE</button></li>
+
         </ul>
+
         </div>
 
+
+
         <button id="homeButton" class="button alt">HOME</button>
-		<a href = "index.html"></a>
-		</article>
 
-		</div>
+</article>
 
-		<footer id="footer">
-			<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</footer>
 
-		</div>
 
-        <dialog id="dlgAreYouSure">
+</div>
+
+
+
+<footer id="footer">
+
+<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+
+</footer>
+
+
+
+</div>
+
+
+
+                <dialog id="dlgAreYouSure">
+
             <h4>Confirmation</h4>
-            <h4 id="dlgmsg2"> Are you sure? </h4> 
+
+            <h4 id="dlgmsg2"> Are you sure? </h4>    
+
             <button id="yes"> YES </button>
+
             <button id="no"> NO </button>
+
         </dialog>
 
-        <script src="html5up-dimension/assets/js/jquery.min.js"></script>
-		<script src="html5up-dimension/assets/js/browser.min.js"></script>
-		<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
-		<script src="html5up-dimension/assets/js/util.js"></script>
-		<script src="html5up-dimension/assets/js/main.js"></script>
 
-		<script>
-			document.getElementById("homeButton").addEventListener("click", (e) => 
-			{
-				e.preventDefault();
-				window.location.hash = "#payroll-calc"; 
-			});
-			
-            document.getElementById("yes").addEventListener("click", () => 
-            {
-                dlgAreYouSure.returnValue = "yes"; 
-                dlgAreYouSure.close();
+
+        <script src="html5up-dimension/assets/js/jquery.min.js"></script>
+
+<script src="html5up-dimension/assets/js/browser.min.js"></script>
+
+<script src="html5up-dimension/assets/js/breakpoints.min.js"></script>
+
+<script src="html5up-dimension/assets/js/util.js"></script>
+
+<script src="html5up-dimension/assets/js/main.js"></script>
+
+
+
+<script>
+
+            document.getElementById("homeButton").addEventListener("click", () => 
+
+{
+
+                window.location.href = "index.html"; 
+
             });
+
+        
+
+            document.getElementById("yes").addEventListener("click", () => 
+
+{
+
+                dlgAreYouSure.returnValue = "yes"; 
+
+                dlgAreYouSure.close();
+
+            });
+
+
 
             document.getElementById("no").addEventListener("click", () => 
-            {
+
+{
+
                 dlgAreYouSure.returnValue = "no";
+
                 dlgAreYouSure.close();
+
             });
+
+
 
             let emp = [];
 
+
             function initpayroll()
+
             {
+
                 emp = [];
+
                 document.getElementById("empName").value = "";
+
                 document.getElementById("daysWorked").value = "";
+
                 document.getElementById("dailyRate").value = "";
+
                 document.getElementById("deductionAmount").value = "";
+
                 document.getElementById("emp").innerHTML="";
+
+
 
                 dlgAreYouSure.returnValue = "no";
 
+
+
                 showList(); 
+
             }
 
+
+
             document.getElementById("addEmp").addEventListener("click",()=> 
+
             {
+
                 let empName = document.getElementById("empName").value;
+
                 let daysWorked = parseFloat(document.getElementById("daysWorked").value);
+
                 let dailyRate = parseFloat(document.getElementById("dailyRate").value);
+
                 let deductionAmount = parseFloat(document.getElementById("deductionAmount").value);
 
+
+
                 if (!empName || isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
-                {
+
+{
+
                     alert("Please fill in all fields with valid data.");
+
                     return;
+
                 }
 
+
+
                 let empNo = 
-                {
+
+{
+
                     empName: empName,
+
                     daysWorked: daysWorked,
+
                     dailyRate: dailyRate,
+
                     deductionAmount: deductionAmount,
+
                     cGross: function() { return Math.round(this.daysWorked * this.dailyRate); },
+
                     netPay: function() { return Math.round(this.cGross() - this.deductionAmount); }
-                };
+
+              };
+
+
 
                 emp.push(empNo);
 
+
+
                 document.getElementById("empName").value = "";
+
                 document.getElementById("daysWorked").value = "";
+
                 document.getElementById("dailyRate").value = "";
+
                 document.getElementById("deductionAmount").value = "";
 
+
+
             showList();
+
             });
 
-            document.getElementById("clear").addEventListener("click", (e)=> 
+
+
+            document.getElementById("clear").addEventListener("click", ()=>
+
             {
-                e.preventDefault(); 
-                if (emp.length === 0) 
-				{
+
+                if (emp.length === 0) {
+
                     alert("The employee list is already empty.");
+
                     return;
+
                 }
+
                 dlgAreYouSure.dataset.action = "clearing";
+
                 document.getElementById("dlgmsg2").innerHTML = "Clear Employee List?";
+
                 dlgAreYouSure.showModal();
+
             });
 
-            document.getElementById("deleteEmp").addEventListener("click",(e)=>
+
+
+            document.getElementById("deleteEmp").addEventListener("click",()=>
+
             {
-                e.preventDefault(); 
+
                 let empNo = parseInt(document.getElementById("delEmp").value);
 
+
+
                 if (isNaN(empNo) || empNo < 1 || empNo > emp.length)
+
                 {
+
                     alert("Invalid Employee Number or List is empty.");
+
                     document.getElementById("delEmp").value = "";
+
                     return;
+
                 }
+
+
 
                 dlgAreYouSure.dataset.action = "deleting";
+
                 dlgAreYouSure.dataset.empNo = empNo;
+
                 document.getElementById("dlgmsg2").innerHTML = "Are you sure you want to remove employee " + empNo + "(" + emp[empNo - 1].empName + ")?";
+
                 dlgAreYouSure.showModal();
+
             });
+
+
 
             dlgAreYouSure.addEventListener("close", (e)=>
+
             {
+
                 let choice = e.target.returnValue;
 
+
+
                 if (choice === "yes")
+
                 {
+
                     if (dlgAreYouSure.dataset.action === "deleting")
+
                     {
+
                         let x = parseInt(dlgAreYouSure.dataset.empNo, 10) - 1;
+
                         if (x >= 0 && x < emp.length)
+
                         {
+
                             emp.splice(x, 1);
+
                         }
 
+
+
                         document.getElementById("delEmp").value = '';
+
                         delete dlgAreYouSure.dataset.empNo;
+
                     }
+
                     else if (dlgAreYouSure.dataset.action === "clearing")
+
                     {
+
                         emp = [];
+
                     }
+
+
 
                 showList();
+
                 }
+
+                
 
                 delete dlgAreYouSure.dataset.action;
+
             });
 
+
+
             function showList()
+
             {
+
                 let i, l, totalGross, totalDeduct, totalNet;
+
                 let theader, tbody, tfooter;
 
+
+
                 if (emp.length === 0)
-                {
+
+{
+
                     document.getElementById("emp").innerHTML = "<p style='text-align: center; color: #888;'>No employees added yet.</p>";
+
                     return;
+
                 }
 
+
+
                 theader = "<thead>";
+
                 theader += "<tr>";
+
                 theader += "<th>#</th>";
+
                 theader += '<th style="text-align:left" >Employee Name</th>';
+
                 theader += "<th>Days</th>";
+
                 theader += '<th style="text-align:right">Rate</th>';
+
                 theader += "<th>Gross</th>";
+
                 theader += '<th style="text-align:right">Deduct.</th>';
+
                 theader += "<th>Net Pay</th>";
+
                 theader += "</tr>";
+
                 theader += "</thead>";
+
+
 
                 l = emp.length;
 
+
+
                 for (i = 0, totalGross = 0, totalDeduct = 0, totalNet= 0, tbody = ''; i < l; i++)
+
                 {
+
                     let ln = i + 1;
+
                     tbody += "<tr>"
+
                         +'<td style="text-align:center">' + ln + ' </td>'
+
                         +'<td style="text-align:left">' + emp[i].empName +' </td>'
+
                         +'<td style="text-align:right">'+emp[i].daysWorked +'</td>'
+
                         +'<td style="text-align:right">'+emp[i].dailyRate.toFixed(2) +'</td>'
+
                         +'<td style="text-align:right">'+emp[i].cGross().toFixed(2) + '</td>'
+
                         +'<td style="text-align:right">'+emp[i].deductionAmount.toFixed(2) +'</td>'
+
                         +'<td style="text-align:right">'+emp[i].netPay().toFixed(2) +'</td>'
+
                         +"</tr>";
 
+
+
                         totalGross += emp[i].cGross();
+
                         totalDeduct += emp[i].deductionAmount;
+
                         totalNet += emp[i].netPay();
+
                 }
 
+
+
                 tfooter ="<tfoot>";
+
                 tfooter+="<tr>";
+
                 tfooter+='<th colspan="2" style="text-align:left">Total Employees: '+emp.length+'</th>';
+
                 tfooter+='<th></th>';
+
                 tfooter+='<th></th>';
+
                 tfooter+='<th style="text-align:right">'+totalGross.toFixed(2)+'</th>';
+
                 tfooter+='<th style="text-align:right">'+totalDeduct.toFixed(2)+'</th>';
+
                 tfooter+='<th style="text-align:right">'+totalNet.toFixed(2)+'</th>';
+
                 tfooter+="</tr>";
+
                 tfooter+="</tfoot>";
 
+
+
                 document.getElementById("emp").innerHTML
+
                 ="<div class='table-wrapper'><table>" + theader + '<tbody>' + tbody + '</tbody>' + tfooter + "</table></div>";
+
             }
-		</script>
-	</body>
+
+</script>
+
+</body>
+
 </html>
