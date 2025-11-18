@@ -1,50 +1,40 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
 
- <html>
+    input {
+        padding: 4px 8px;
+    }
 
+    button {
+        padding: 6px 12px;
+        margin-left: 5px;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+    }
+</style>
+</head>
 <body>
 
     <h2>Celsius to Fahrenheit</h2>
-    <p> Formula: Fahrenheit = ( ( Celsius * 9 ) / 5 ) + 32 </p>
+    <p>Formula: Fahrenheit = ( ( Celsius * 9 ) / 5 ) + 32</p>
 
     <br><br>
 
-    <label for= "cel"> Enter Celsius : </label>
-    <input id = "cel">
+    <label for="cel">Enter Celsius : </label>
+    <input id="cel">
 
-    <button onclick="enterCel()"> CALCULATE </button>
-    <button onclick = "clearValues()"> CLEAR </button>
+    <button onclick="enterCel()">CALCULATE</button>
+    <button onclick="clearValues()">CLEAR</button>
 
-        <br><br><br>
-        <label for = "result">Fahrenheit Conversion : </label>
-        <input id = "result" readonly>
-
-    <script>
-        
-        function enterCel()
-        {
-            let celsh = document.getElementById("cel").value*1;
-
-            let fah = ( ( celsh * 9 ) / 5 ) + 32
-            fah = fah.toFixed(2);
-
-            document.getElementById("result").value = fah;
-        }
-
-        function clearValues()
-            {
-                document.getElementById("cel").value = '';
-                document.getElementById("result").value = '';
-            }
-
-
-    </script>
-
-
-    <br><br><br><br>
-    <a href="main.html">HOME</a>
-
-
-</body>
-
- </html>
+    <br><br><br>
+    <label for="result">Fahrenheit Conversion : </label>
+    <input id="result" rea
