@@ -1,93 +1,86 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Average of the First n Numbers</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>Average of the First n Numbers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
 
-		<!-- Wrapper -->
-		<div id="wrapper">
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-			<!-- Header -->
-			<header id="header">
-				<div class="logo">
-					<span class="icon fa-gem"></span>
-				</div>
-				<div class="content">
-					<div class="inner">
-						<h1>Dimension</h1>
-						<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</div>
-				</div>
-				<nav>
-					<ul>
-						<li><a href="index.html">HOME</a></li>
-					</ul>
-				</nav>
-			</header>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo">
+                <span class="icon fa-gem"></span>
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <h1>Dimension</h1>
+                    <p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                </ul>
+            </nav>
+        </header>
 
-			<!-- Main -->
-			<div id="main">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                <h1>The Average of the First n Numbers</h1>
+                <br>
 
-				<article id="average" class="panel">
-					<div class="inner">
-						<h1>The Average of the First n Numbers</h1>
-						<br>
+                <p>
+                <label for="n">Input a value : </label>
+                <input id="n" type="number"></input>
+                <button id="display"> DISPLAY NUMBERS </button>
+                </p>
 
-						<p>
-						<label for="n">Input a value : </label>
-						<input id="n" type="number"></input>
-						<button id="display"> DISPLAY NUMBERS </button>
-						</p>
+                <br>
+                <p id="numbers"></p>
 
-						<br>
-						<p id="numbers"></p>
+                <h3 id="result"></h3>
+            </div>
+        </div>
 
-						<h3 id="result"></h3>
-					</div>
-				</article>
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
 
-			</div>
+    </div>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-			</footer>
+    <!-- Your JS -->
+    <script>
+        document.getElementById("display").addEventListener("click", ()=> {
 
-		</div>
+            let n = document.getElementById("n").value*1;
+            let sum, ave, i, ntext;
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+            sum = 0;
+            ave = 0;
+            ntext = "";
 
-		<script>
-			document.getElementById("display").addEventListener("click", () => {
-				let n = parseInt(document.getElementById("n").value);
-				if (!n || n <= 0) {
-					document.getElementById("numbers").innerHTML = '';
-					document.getElementById("result").innerHTML = 'Please enter a positive number!';
-					return;
-				}
+            for (i = 1; i <= n ; i++) 
+            {
+                sum += i;
+            }
 
-				let sum = 0;
-				let ntext = '';
-				for (let i = 1; i <= n; i++) {
-					sum += i;
-					ntext += i + (i < n ? ', ' : '');
-				}
-				let ave = sum / n;
+            ave = sum / n;
 
-				document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
-				document.getElementById("result").innerHTML = "The Average of the first " + n + " numbers is " + ave;
-			});
-		</script>
+            document.getElementById("numbers").innerHTML = ntext;
 
-	</body>
+            document.getElementById("result").innerHTML=
+            "The Average of the first "+ n + " numbers is " + ave;
+
+        });
+    </script>
+
+</body>
 </html>
