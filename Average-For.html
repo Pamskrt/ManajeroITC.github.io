@@ -19,8 +19,8 @@
 				</div>
 				<div class="content">
 					<div class="inner">
-						<h1>Dimension</h1>
-						<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<h1>The Average of the First n Numbers</h1>
+						<p>Enter a number below to compute the average of the first n numbers.</p>
 					</div>
 				</div>
 				<nav>
@@ -34,21 +34,15 @@
 			<div id="main">
 
 				<article id="average">
-					<div class="inner">
-						<h1>The Average of the First n Numbers</h1>
-						<br>
-
-						<p>
+					<p>
 						<label for="n">Input a value : </label>
-						<input id="n" type="number"></input>
-						<button id="display"> DISPLAY NUMBERS </button>
-						</p>
+						<input id="n" type="number" />
+						<button id="display">DISPLAY NUMBERS</button>
+					</p>
 
-						<br>
-						<p id="numbers"></p>
-
-						<h3 id="result"></h3>
-					</div>
+					<br>
+					<p id="numbers"></p>
+					<h3 id="result"></h3>
 				</article>
 
 			</div>
@@ -69,21 +63,19 @@
 
 		<!-- Your JS -->
 		<script>
-			document.getElementById("display").addEventListener("click", () => {
-				let n = parseInt(document.getElementById("n").value);
-
-				if (!n || n <= 0) {
-					document.getElementById("numbers").innerHTML = '';
-					document.getElementById("result").innerHTML = 'Please enter a positive number!';
+			document.getElementById("display").addEventListener("click", ()=> {
+				let n = document.getElementById("n").value * 1;
+				if (n < 1) {
+					alert("Please enter a number greater than 0");
 					return;
 				}
 
 				let sum = 0;
-				let ntext = '';
+				let ntext = "";
 
 				for (let i = 1; i <= n; i++) {
 					sum += i;
-					ntext += i + (i < n ? ', ' : '');
+					ntext += i + " ";
 				}
 
 				let ave = sum / n;
