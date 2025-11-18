@@ -1,91 +1,36 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <title>Average of the First n Numbers</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    </head>
-    <body class="is-preload">
+<!-- Add this inside <div id="main">, preferably as a new article -->
+<article id="average-numbers">
+    <h2 class="major">Average Calculator</h2>
+    <p>
+        <label for="n">Input a value: </label>
+        <input id="n" type="number" placeholder="Enter a number" />
+        <button id="display">Display Average</button>
+    </p>
+    <p id="numbers"></p>
+    <h3 id="result"></h3>
+</article>
 
-        <div id="wrapper">
+<script>
+    document.getElementById("display").addEventListener("click", () => {
+        let n = document.getElementById("n").value * 1;
+        if (n <= 0 || isNaN(n)) {
+            document.getElementById("result").innerHTML = "Please enter a positive number!";
+            document.getElementById("numbers").innerHTML = "";
+            return;
+        }
 
-            <header id="header">
-                <div class="logo">
-                    <span class="icon fa-gem"></span>
-                </div>
-                <div class="content">
-                    <div class="inner">
-                        <h1>Average Program</h1>
-                        <p>Compute the average of the first 'n' numbers using a For Loop.</p>
-                    </div>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="index.html">HOME</a></li>
-                    </ul>
-                </nav>
-            </header>
+        let sum = 0;
+        let ntext = "";
 
-            <div id="main">
+        for (let i = 1; i <= n; i++) {
+            sum += i;
+            ntext += i + (i < n ? ", " : "");
+        }
 
-                <article id="average-program" class="active">
-                    <h2 class="major">The Average of the First n Numbers</h2>
-                    <br>
+        let ave = sum / n;
 
-                    <p>
-                    <label for="n">Input a positive integer $n$: </label>
-                    <input id="n" type="number" min="1"></input>
-                    <button id="display"> CALCULATE AVERAGE </button>
-                    </p>
-
-                    <br>
-                    <p id="numbers"></p>
-
-                    <h3 id="result"></h3>
-                </article>
-
-            </div>
-
-            <footer id="footer">
-                <p class="copyright">&copy; Your Website. Design based on HTML5 UP Dimension.</p>
-            </footer>
-
-        </div>
-
-        <div id="bg"></div>
-
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-
-        <script>
-            document.getElementById("display").addEventListener("click", () => {
-                let n = parseInt(document.getElementById("n").value);
-
-                if (!n || n <= 0) {
-                    document.getElementById("numbers").innerHTML = '';
-                    document.getElementById("result").innerHTML = 'Please enter a positive number!';
-                    return;
-                }
-
-                let sum = 0;
-                let ntext = '';
-
-                for (let i = 1; i <= n; i++) {
-                    sum += i;
-                    ntext += i + (i < n ? ', ' : '');
-                }
-
-                let ave = sum / n;
-
-                document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
-                document.getElementById("result").innerHTML = "The Average of the first " + n + " numbers is " + ave.toFixed(2);
-            });
-        </script>
-
-    </body>
-</html>
+        document.getElementById("numbers").innerHTML = "Numbers: " + ntext;
+        document.getElementById("result").innerHTML =
+            "The average of the first " + n + " numbers is " + ave;
+    });
+</script>
