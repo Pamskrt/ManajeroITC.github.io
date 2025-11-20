@@ -135,7 +135,7 @@ input, select, textarea {
 		}
 
 	body, input, select, textarea {
-		color: #000000;
+		color: #ffffff;
 		font-family: "Source Sans Pro", sans-serif;
 		font-weight: 300;
 		font-size: 1rem;
@@ -1633,6 +1633,7 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
 
 
 
