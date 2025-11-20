@@ -12,9 +12,13 @@
 			
             #result 
 			{
-                background-color: #333333; 
-                color: #f0f0f0;
-            }
+                background-color: #ffffff; 
+                color: #000000;
+            }
+			.visible-field 
+			{
+    			opacity: 1 !important;
+			}
 			
             #tax-calc table 
 			{
@@ -55,7 +59,7 @@
 					<h2 class="major">Income Tax</h2>
                     <div class="field">
 						<label for="income">Enter Taxable Income:</label>
-						<input id="income" type="number" name="income">
+						<input id="income" type="number" name="income" class="visible-field">
 					</div>
 					
                     <ul class="actions">
@@ -67,7 +71,7 @@
 
                     <div class="field">
 					    <label for="result">Computed Income Tax:</label>
-					    <input id="result" type="text" name="result" readonly>
+					    <input id="result" type="text" name="result" class="visible-field" readonly>
                     </div>
 
                     <a href="index.html" class="home-link">HOME</a>
