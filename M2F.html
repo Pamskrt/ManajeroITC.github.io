@@ -12,9 +12,13 @@
 			
             #result 
 			{
-                background-color: #333333; 
-                color: #f0f0f0;
-            }
+                background-color: #ffffff; 
+                color: #000000;
+            }
+			.visible-field 
+			{
+    			opacity: 1 !important;
+			}
         </style>
 	</head>
 	
@@ -47,7 +51,7 @@
 					
     <div class="field">
 	<label for="meter">Enter Meters:</label>
-	<input id="meter" type="number" name="meter">
+	<input id="meter" type="number" name="meter" class="visible-field">
 	</div>
 					
     <ul class="actions">
@@ -58,7 +62,7 @@
 	<hr>
 	<div class="field">
 	<label for="result">Feet Conversion:</label>
-	<input id="result" type="text" name="result" readonly>
+	<input id="result" type="text" name="result" class="visible-field" readonly>
     </div>
 
    	<a href="index.html" class="home-link">HOME</a>
