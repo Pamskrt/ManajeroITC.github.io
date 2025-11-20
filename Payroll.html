@@ -51,45 +51,61 @@
             padding: 0.75em 0.5em;
             text-align: center;
         }
-        dialog 
+        dialog 
         {
-            background: #ffffff;
-            color: #000000;
-            border: solid 4px #f3f3f3;
-            border-radius: 2px;
-            padding: 2em;
+            background: #f9f9f9;       
+            color: #333333;               
+            border: none;                
+            border-radius: 12px;               
+            padding: 2em 2.5em;
             text-align: center;
-            max-width: 80%;
-            margin: auto;
-        }
-        dialog h4 
-        {
-            color: #000000;
-            margin: auto;
-            text-align: center;
-        }
-        dialog button 
-        {
-            padding: 0.5em 0.5em;
-            border: solid 3px rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-            background: #000000;
-            color: #d3d3d3;
-            cursor: pointer;
-            display: inline-block;
-            margin: auto; 
-        }
-        dialog button #yes 
-        {
-            background: #28a745;  
-            color: #fff;
+            max-width: 400px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25); 
+            font-family: 'Arial', sans-serif;
         }
 
-        dialog button #no 
+        dialog h4 
         {
-            background: #dc3545;
-            color: #fff;
+            margin: 0 0 1rem 0;
+            font-size: 1.2rem;
+            text-align: center;
         }
+
+        dialog button 
+        {
+            padding: 0.6em 1.2em;
+            margin: 0 0.5em;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        dialog button#yes 
+        {
+            background: #28a745; 
+            color: #ffffff;    
+        }
+
+        dialog button#yes:hover 
+        {
+            background: #218838; 
+        }
+
+
+        dialog button#no 
+        {
+            background: #dc3545; 
+            color: #ffffff;      
+        }
+
+        dialog button#no:hover 
+        {
+            background: #c82333; 
+        }
+        
     </style>
 </head>
 <body class="is-preload" onload="initpayroll()">
