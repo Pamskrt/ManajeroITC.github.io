@@ -15,9 +15,15 @@
                 background-color: #ffffff; 
                 color: #000000;
             }
-			.visible-field 
+			#f2c input 
 			{
-    			opacity: 1 !important;
+			    opacity: 1 !important;
+			    background-color: #ffffff;
+			    color: #000000;
+			    border: 1px solid #999;
+			    padding: 0.5rem;
+			    font-size: 1rem;
+			    border-radius: 4px;
 			}
         </style>
 	</head>
@@ -51,7 +57,7 @@
 					
     <div class="field">
 	<label for="meter">Enter Meters:</label>
-	<input id="meter" type="number" name="meter" class="visible-field">
+	<input id="meter" type="number" name="meter">
 	</div>
 					
     <ul class="actions">
@@ -62,7 +68,7 @@
 	<hr>
 	<div class="field">
 	<label for="result">Feet Conversion:</label>
-	<input id="result" type="text" name="result" class="visible-field" readonly>
+	<input id="result" type="text" name="result" readonly>
     </div>
 
    	<a href="index.html" class="home-link">HOME</a>
