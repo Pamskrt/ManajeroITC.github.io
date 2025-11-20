@@ -14,6 +14,10 @@
                 background-color: #333333; 
                 color: #f0f0f0;
             }
+			.visible-field 
+			{
+    			opacity: 1 !important;
+			}
 			
         </style>
 	</head>
@@ -46,7 +50,7 @@
 					
         <div class="field">
 		<label for="cel">Enter Celsius:</label>
-		<input id="cel" type="number" name="cel">
+		<input id="cel" type="number" name="cel" class="visible-field">
 		</div>
 					
         <ul class="actions">
@@ -57,7 +61,7 @@
 		<hr>
 		<div class="field">
 		<label for="result">Fahrenheit Conversion:</label>
-		<input id="result" type="text" name="result" readonly>
+		<input id="result" type="text" name="result" class="visible-field" readonly>
         </div>
 
         <a href="index.html" class="home-link">HOME</a>
